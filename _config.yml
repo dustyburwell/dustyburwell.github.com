@@ -1,9 +1,10 @@
-title: My blog
+title: Dusty Burwell
 #url: http://www.mydomain.com
 
 markdown: rdiscount
 pygments: true
 permalink: /:year/:month/:day/:title
+future: false
 
 lsi: true
 paginate: 20
