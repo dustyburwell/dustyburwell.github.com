@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Weeks 1 and 2 in Edinburgh"
-author: me
+author: Dusty
 tags:
 - travel
 - edinburgh
