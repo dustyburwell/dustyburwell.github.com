@@ -24,7 +24,7 @@ This time, our flight from MCI to Newark, NJ was great, and even arrived early. 
 
 ###<a id="week1"></a>Week 1
 
-We arrived in Edinburgh on a Friday, but our first weekend in the city was fairly uneventful due partly to our jetlag, but mostly due to the cold, rainy Scottish weather. We were prepared for chilly, but not oh-my-god-cold and rainy. We went to several stores looking for jackets or coats, but apparently they don't sell those here. It turns out we didn't need them tough as it's not been as cold since the first weekend.
+We arrived in Edinburgh on a Friday, but our first weekend in the city was fairly uneventful due partly to our jetlag, but mostly due to the cold, rainy Scottish weather. We were prepared for chilly, but not oh-my-god-cold and rainy. We went to several stores looking for jackets or coats, but apparently they don't sell those here. It turns out we didn't need them though as it's not been as cold since the first weekend.
 
 Our first priority was to find a grocery store where we could buy food for the week. Luckily we found one only about a 15 minute walk away. Our second priority was to explore our surroundings, and explore we did. I think we probably walked about 20 miles in various directions around our flat the first week.
 
@@ -36,7 +36,7 @@ Instead, on Friday, we explored the Royal mile. The Royal mile is the collection
 
 While up by the castle, we came across the [Camera Obscura](http://www.camera-obscura.co.uk/) and went in. The Camera Obscura is an interactive museum style attraction showcasing all kinds of interesting illusions and visual exhibits including holograms, distortion mirrors, a mirror maze, and a crazy spinning light vortex (don't try this one if you're at all prone to nausea). It's all topped off with the [camera obscura](http://en.wikipedia.org/wiki/Camera_obscura). The camera was installed in the Victorian era and is Edinburgh's earlisted tourist attraction. I'd say that this is an attraction that any visitor to Edinburgh should put on their list. It was a very fun way to spend a couple of hours.
 
-We also wondered into the [Tartan Weaving Mill and Exhibition]. The exhibit shows the whole process of weaving a tartan and you can buy a swath of your clan's tartan or a plaque with your family's crest. They've also got tons of cool old Scottish weapons that I'm pretty sure wouldn't make it through airport security. It was fairly interesting, but seemed to mainly be an attempt to get you to buy something.
+We also wondered into the [Tartan Weaving Mill and Exhibition](http://www.edinburgh-royalmile.com/interest/tartanweavingmill.html). The exhibit shows the whole process of weaving a tartan and you can buy a swath of your clan's tartan or a plaque with your family's crest. They've also got tons of cool old Scottish weapons that I'm pretty sure wouldn't make it through airport security. It was fairly interesting, but seemed to mainly be an attempt to get you to buy something.
 
 On Saturday, we started our morning with a tour of Scottish Parliament. The new Scottish Parliament building was completed in 2004 after the UK granted Scotland their own local Parliament in 1999. The building was very interesting and stands in stark contrast to the historic buildings that surround it, including the Palace of Holyroodhouse. And with that, I think I may now know more about the Scottish Parliament than US Congress. I recommend this to anyone visiting Edinburgh, especially citizens of the UK. Why not go see what your £450m has bought you?
 
@@ -54,6 +54,6 @@ The Rabbies bus tour was an incredible experience and our driver was extremly kn
 
 ###Phew
 
-I feel like we've done and seen so much and that's after only two weeks in Edinburgh. Go check out the [photos on flickr][1] Be sure to come back soon and read about the rest of our trip.
+I feel like we've done and seen so much and that's after only two weeks in Edinburgh. Go check out the [photos on flickr][1]. Be sure to come back soon and read about the rest of our trip.
 
 [1]: http://www.flickr.com/photos/82129443@N04/sets/72157630469860344/with/7523311190/
