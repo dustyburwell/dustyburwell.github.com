@@ -12,6 +12,49 @@ h1, h2, h3 {
   margin: 0;
 }
 
+.contact {
+  float: right;
+  margin-top: 20px;
+  margin-right: 30px;
+  list-style: none;
+}
+
+.contact li {
+  margin: 0;
+  line-height: 1.5em;
+  padding-left: 20px;
+}
+
+.contact li a {
+  color: #666;
+  text-decoration: none;
+}
+
+.contact .speakerrate {
+  background: url(../img/speakerrate.jpg) no-repeat left center;
+  background-size: 16px 16px;
+}
+
+.contact .github {
+  background: url(../img/blacktocat.png) no-repeat left center;
+  background-size: 16px 16px;
+}
+
+.contact .twitter {
+  background: url(../img/twitter.png) no-repeat left center;
+  background-size: 16px 16px;
+}
+
+.contact .email {
+  background: url(../img/gmail.png) no-repeat left center;
+  background-size: 16px 16px;
+}
+
+.contact .phone {
+  background: url(../img/phone.png) no-repeat left center;
+  background-size: 16px 16px;
+}
+
 .subtitle {
   font-size: .8em;
   margin: 0 0 10px 5px;
@@ -30,66 +73,42 @@ h1, h2, h3 {
   width: 100px;
 }
 
-section > header {
-  font-size: 2em;
-}
-
 @media only screen and (max-width: 480px) {
   body {
     width: 480px;
   }
 
+  .bio {
+    margin-bottom: 10px;
+  }
+
   .avatar {
     width: 200px;
+  }
+
+  .contact {
+    float: none;
+    margin-top: 10px;
+  }
+
+  section > ul {
+    padding-left: 10px;
+  }
+
+  section > ul > li {
+    list-style: none;
+    margin-bottom: 25px;
+  }
+
+  .date {
+    font-size: .9em;
+    float: right;
   }
 }
 
 @media all and (min-width: 481px) {
-  
-  .contact {
-    float: right;
-    margin-top: 20px;
-    margin-right: 30px;
-    list-style: none;
-  }
 
-  .contact li {
-    margin: 0;
-    line-height: 1.5em;
-    padding-left: 20px;
-  }
-
-  .contact li a {
-    color: #666;
-    text-decoration: none;
-  }
-
-  .contact .speakerrate {
-    background: url(../img/speakerrate.jpg) no-repeat left center;
-    background-size: 16px 16px;
-  }
-
-  .contact .github {
-    background: url(../img/blacktocat.png) no-repeat left center;
-    background-size: 16px 16px;
-  }
-
-  .contact .twitter {
-    background: url(../img/twitter.png) no-repeat left center;
-    background-size: 16px 16px;
-  }
-
-  .contact .email {
-    background: url(../img/gmail.png) no-repeat left center;
-    background-size: 16px 16px;
-  }
-
-  .contact .phone {
-    background: url(../img/phone.png) no-repeat left center;
-    background-size: 16px 16px;
-  }
-
-  section.clearfix:after {
+  .clearfix:after {
     content: ".";
     display: block;
     clear: both;
@@ -102,6 +121,10 @@ section > header {
     border-top: 2px solid #999;
   }
 
+  header > div {
+    float: left;
+  }
+
   h2 {
     font-size: 1.2em;
     float: left;
@@ -111,12 +134,12 @@ section > header {
 
   section > ul {
     float: left;
+    list-style: none;
     margin-bottom: 0;
     width: 540px;
   }
 
   section > ul > li {
-    list-style: none;
     border-left: 2px solid #999;
     padding-left: 25px;
     line-height: 1.4em;
