@@ -73,26 +73,37 @@ h1, h2, h3 {
   width: 100px;
 }
 
-@media only screen and (max-device-width: 480px) {
+.date {
+  font-size: .9em;
+}
+
+@media only screen and (max-device-width : 480px) {
   body {
-    width: 480px;
+    width: 100%;
   }
 
   .bio {
     margin-bottom: 10px;
+    width: auto;
   }
 
   .avatar {
-    width: 200px;
+    width: 25%;
   }
 
   .contact {
     float: none;
     margin-top: 10px;
+    padding-left: 10px;
+  }
+
+  body > section {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   section > ul {
-    padding-left: 10px;
+    padding: 0;
   }
 
   section > ul > li {
@@ -101,12 +112,18 @@ h1, h2, h3 {
   }
 
   .date {
+    position: relative;
+    top: 20px;
     font-size: .9em;
-    float: right;
+  }
+
+  h3 {
+    position: relative;
+    top: -20px;
   }
 }
 
-@media all and (min-width: 481px) {
+@media all and (min-device-width: 481px) {
 
   .clearfix:after {
     content: ".";
@@ -160,7 +177,6 @@ h1, h2, h3 {
   }
 
   .date {
-    font-size: .9em;
     float: right;
   }
 }
