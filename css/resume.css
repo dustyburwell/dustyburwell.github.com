@@ -6,9 +6,10 @@ body {
   -webkit-print-color-adjust: exact;
 }
 
-header { 
+h1, h2, h3 { 
   font-family: 'Gilda Display', serif;
   color: rgb(204, 0, 136);
+  margin: 0;
 }
 
 .subtitle {
@@ -29,99 +30,114 @@ header {
   width: 100px;
 }
 
-.contact {
-  float: right;
-  margin-top: 20px;
-  margin-right: 30px;
-  list-style: none;
-}
-
-.contact li {
-  margin: 0;
-  line-height: 1.5em;
-  padding-left: 20px;
-}
-
-.contact li a {
-  color: #666;
-  text-decoration: none;
-}
-
-.contact .speakerrate {
-  background: url(../img/speakerrate.jpg) no-repeat left center;
-  background-size: 16px 16px;
-}
-
-.contact .github {
-  background: url(../img/blacktocat.png) no-repeat left center;
-  background-size: 16px 16px;
-}
-
-.contact .twitter {
-  background: url(../img/twitter.png) no-repeat left center;
-  background-size: 16px 16px;
-}
-
-.contact .email {
-  background: url(../img/gmail.png) no-repeat left center;
-  background-size: 16px 16px;
-}
-
-.contact .phone {
-  background: url(../img/phone.png) no-repeat left center;
-  background-size: 16px 16px;
-}
-
 section > header {
   font-size: 2em;
 }
 
-section.clearfix:after {
-  content: ".";
-  display: block;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  height: 0;
+@media only screen and (max-width: 480px) {
+  body {
+    width: 480px;
+  }
+
+  .avatar {
+    width: 200px;
+  }
 }
 
-section > section {
-  border-top: 2px solid #999;
-  padding-top: 25px;
-}
+@media all and (min-width: 481px) {
+  
+  .contact {
+    float: right;
+    margin-top: 20px;
+    margin-right: 30px;
+    list-style: none;
+  }
 
-section > section > header {
-  font-size: 1.2em;
-  float: left;
-  width: 150px;
-}
+  .contact li {
+    margin: 0;
+    line-height: 1.5em;
+    padding-left: 20px;
+  }
 
-section > section > div {
-  float: left;
-  width: 610;
-}
+  .contact li a {
+    color: #666;
+    text-decoration: none;
+  }
 
-section > section section {
-  border-left: 2px solid #999;
-  padding-left: 25px;
-  margin-bottom: 25px;
-  line-height: 1.4em;
-}
+  .contact .speakerrate {
+    background: url(../img/speakerrate.jpg) no-repeat left center;
+    background-size: 16px 16px;
+  }
 
-section > section section > header {
-  font-size: 1.2em;
-}
+  .contact .github {
+    background: url(../img/blacktocat.png) no-repeat left center;
+    background-size: 16px 16px;
+  }
 
-section > section section > p {
-  margin: 0;
-}
+  .contact .twitter {
+    background: url(../img/twitter.png) no-repeat left center;
+    background-size: 16px 16px;
+  }
 
-section > section section > ul {
-  width: 500px;
-  margin-bottom: 0;
-}
+  .contact .email {
+    background: url(../img/gmail.png) no-repeat left center;
+    background-size: 16px 16px;
+  }
 
-.date {
-  font-size: .9em;
-  float: right;
+  .contact .phone {
+    background: url(../img/phone.png) no-repeat left center;
+    background-size: 16px 16px;
+  }
+
+  section.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+
+  body > section {
+    border-top: 2px solid #999;
+  }
+
+  h2 {
+    font-size: 1.2em;
+    float: left;
+    margin-top: 16px;
+    width: 150px;
+  }
+
+  section > ul {
+    float: left;
+    margin-bottom: 0;
+    width: 540px;
+  }
+
+  section > ul > li {
+    list-style: none;
+    border-left: 2px solid #999;
+    padding-left: 25px;
+    line-height: 1.4em;
+    margin-bottom: 25px;
+  }
+
+  section section > header {
+    font-size: 1.2em;
+  }
+
+  section section > p {
+    margin: 0;
+  }
+
+  div > section section > ul {
+    width: 500px;
+    margin-bottom: 0;
+  }
+
+  .date {
+    font-size: .9em;
+    float: right;
+  }
 }
