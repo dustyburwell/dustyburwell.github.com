@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Weeks 1 and 2 in Edinburgh"
+description: "A quick write up of an awesome couple of weeks in Edinburgh, Scotland."
 author: Dusty
 tags:
 - travel
@@ -18,7 +19,7 @@ The following day I brought up the idea of working remotely in another country w
 
 ###The Travel - oh the travel
 
-Stephanie's never had a successful, delay-free flight. And, so far this trip has been no exception. When she flew to Paris last October, she got stuck for a night at Dulles International Airport in Washington D.C. when her flight was delayed due to weather. On our way home from Paris, we had a two-hour delay on the tarmac that caused us to miss our connection in D.C. again. 
+Stephanie's never had a successful, delay-free flight. And, so far this trip has been no exception. When she flew to Paris last October, she got stuck for a night at Dulles International Airport in Washington D.C. when her flight was delayed due to weather. On our way home from Paris, we had a two-hour delay on the tarmac that caused us to miss our connection in D.C. again.
 
 This time, our flight from MCI to Newark, NJ was great, and even arrived early. However, our flight out of Newark, to London Heathrow was delayed 4 hours causing us to miss our connection from London to Edinburgh. We've got our fingers crossed for the return trip, though.
 

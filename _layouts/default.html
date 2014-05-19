@@ -17,6 +17,20 @@
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/css/style.css" />
 	<script src="/js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@dustyburwell">
+	{% if page.title %}
+	<meta name="twitter:title" content="{{page.title}}">
+	{% else %}
+	<meta name="twitter:title" content="{{site.title}}">
+	{% endif %}
+	{% if page.description %}
+	<meta name="twitter:description" content="{{page.description}}">
+	{% else %}
+	<meta name="twitter:description" content="Dusty's kick butt blog">
+	{% endif %}
+	<meta name="twitter:creator" content="@dustyburwell">
+	<meta name="twitter:domain" content="dusty.burwells.us">
 </head>
 
 <body>
