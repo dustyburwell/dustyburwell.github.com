@@ -1,6 +1,45 @@
 ---
-layout: default
+layout: index
+body-class: post
 ---
-{% assign post = page %}
-<div class="hfeed">{% include post-article.html %}</div>
 
+{% if content == nil %}
+{% assign content = page.content %}
+{% endif %}
+
+<section class="home">
+  <div>
+    <a href="/">
+      <img src="/img/gravatar.jpg"/>
+    </a>
+
+    <nav>
+    <ul>
+    <li><a href="/">Articles</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/projects">Adventures</a></li>
+    </ul>
+    </nav>
+  </div>
+</section>
+
+<div class="main-content">
+<div class="hfeed">
+
+<article itemscope itemtype="http://schema.org/BlogPosting" class="post hentry">
+  <header>
+    <h2 itemprop="name" class="entry-title">
+    <a href="{{ site.url }}{{ page.url }}" rel="bookmark">{{ page.title }}</a>
+    </h2>
+  </header>
+
+  <section class="entry-content">{{ content }}</section>
+
+  <footer>
+    Published {{ page.date | date: '%B %-d, %Y' }}
+    <a target="_blank" href="https://twitter.com/intent/tweet?text=%40dustyburwell+%28http://www.dustyburwell.com{{page.url}}%29&amp;related=dustyburwell%3AAuthor">Comment</a>
+  </footer>
+</article>
+</div>
+
+</div>

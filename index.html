@@ -1,18 +1,41 @@
 ---
-layout: default
+layout: index
 description: This is the landing page
 ---
 
-{% for post in site.posts limit: 1 %}
-<div class="hfeed">{% include post-article.html %}</div>
+<section class="home">
+  <div class="hero">
+    <a href="/">
+      <img src="img/gravatar.jpg"/>
+    </a>
+  </div>
+
+  <h1>
+  Dusty Burwell
+  </h1>
+
+  <nav>
+  <ul>
+  <li><a href="/">Articles</a></li>
+  <li><a href="/#about">About</a></li>
+  <li><a href="/#adventures">Adventures</a></li>
+  </ul>
+  </nav>
+</section>
+
+<div class="main-content">
+<div class="hfeed">
+{% for post in site.posts limit: 4 %}
+<article itemscope itemtype="http://schema.org/BlogPosting" class="post hentry">
+  <header>
+    <h2 itemprop="name" class="entry-title">
+    <a href="{{ site.url }}{{ post.url }}" rel="bookmark">{{ post.title }}</a>
+    </h2>
+  </header>
+
+  <section class="entry-content">{{ post.content | strip_html | truncatewords:75}}</section>
+</article>
 {% endfor %}
+</div>
 
-<aside>
-	<h3>Most recent posts</h3>
-	<ul class="posts-list hfeed">
-		{% for post in site.posts limit: 5 %}
-		{% include post-list-item.html %}
-		{% endfor %}
-	</ul>
-</aside>
-
+</div>
