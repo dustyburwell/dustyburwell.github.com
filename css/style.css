@@ -2,175 +2,167 @@
   margin: 0;
   padding: 0;
 }
-body.index {
+body {
   color: #666;
   font-family: 'Lora', serif;
 }
-body.index section.home {
-  background-image: url("../img/chicago.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+body header,
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
   font-family: 'Oxygen', sans-serif;
-  color: #e9e9e9;
-  text-align: center;
-  padding-top: 250px;
-  padding-bottom: 25px;
+  line-height: 1.5em;
+  margin-bottom: 15px;
 }
-body.index section.home h1 {
+body header a,
+body h1 a,
+body h2 a,
+body h3 a,
+body h4 a,
+body h5 a,
+body h6 a {
+  text-decoration: none;
+  color: #111;
+}
+body h1 {
   font-size: 48px;
   text-shadow: 0px 0px 4px #333;
   margin-top: 10px;
 }
-body.index section.home .hero {
-  margin: 0 auto;
+body>header {
+  background-image: url("../img/chicago.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #e9e9e9;
+  margin-bottom: 0;
 }
-body.index section.home .hero img {
+body>header img {
+  border-radius: 100%;
   border: 4px solid #e9e9e9;
 }
-body.index section.home .hero,
-body.index section.home .hero img {
-  width: 100px;
-  height: 100px;
-  border-radius: 100%;
-}
-body.index section.home nav ul li {
+body>header nav ul li {
   display: inline;
   font-size: 20px;
   text-shadow: 0px 0px 4px #333;
 }
-body.index section.home nav ul li a {
+body>header nav ul li a {
   text-decoration: none;
   color: #e9e9e9;
 }
-body.index section.home nav ul li:not(:last-child):after {
+body>header nav ul li:not(:last-child):after {
   content: "•";
   margin-left: 1em;
   margin-right: 1em;
 }
-body.index div.main-content {
+.main-content {
   margin: 0;
   padding-top: 50px;
   padding-bottom: 50px;
   background: #fff;
 }
-body.index div.main-content .hfeed {
+.main-content .hfeed {
   max-width: 760px;
   margin: 0 auto;
 }
-body.index div.main-content .hfeed article {
+.main-content .hfeed article {
   line-height: 1.5em;
   font-size: 1.2em;
   letter-spacing: 0.07em;
 }
-body.index div.main-content .hfeed article h2,
-body.index div.main-content .hfeed article h3 {
-  font-size: 30px;
-  font-family: 'Oxygen', sans-serif;
+.main-content .hfeed article a {
+  color: #333;
+}
+.main-content .hfeed article p {
   margin-bottom: 15px;
 }
-body.index div.main-content .hfeed article h2 a,
-body.index div.main-content .hfeed article h3 a {
-  text-decoration: none;
-  color: #111;
-}
-body.index div.main-content .hfeed article h3 {
-  font-size: 25px;
-}
-body.index div.main-content .hfeed article p {
-  margin-bottom: 15px;
-}
-body.index div.main-content .hfeed article section {
+.main-content .hfeed article section {
   margin-bottom: 35px;
 }
-body.post {
-  color: #666;
-  font-family: 'Lora', serif;
+body.index>header {
+  padding-top: 250px;
+  padding-bottom: 25px;
+  text-align: center;
 }
-body.post section.home {
-  position: fixed;
-  width: 100%;
-  border-bottom: 1px solid #e9e9e9;
-  background-color: #fff;
-  background-image: url("../img/chicago.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: 'Oxygen', sans-serif;
-  color: #e9e9e9;
+body.index>header img {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+body.post>header {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-body.post section.home div {
+body.post>header .header-content {
   max-width: 760px;
   margin: 0 auto;
 }
-body.post section.home div img {
-  border: 4px solid #e9e9e9;
+body.post>header .header-content h1 {
+  display: none;
+}
+body.post>header .header-content img {
   width: 50px;
   height: 50px;
-  border-radius: 100%;
   vertical-align: middle;
 }
-body.post section.home div nav {
+body.post>header .header-content nav {
   margin-left: 20px;
   position: relative;
   top: 5px;
 }
-body.post section.home div nav,
-body.post section.home div nav ul {
+body.post>header .header-content nav,
+body.post>header .header-content nav ul {
   display: inline;
 }
-body.post section.home div nav ul li {
-  display: inline;
-  font-size: 20px;
-  text-shadow: 0px 0px 4px #333;
+@media screen and (max-width: 780px) {
+  body.post>header,
+  body.index>header {
+    padding-top: 10px;
+    background-size: 760px;
+    width: 100%;
+  }
+  body.post>header .header-content,
+  body.index>header .header-content {
+    margin: 0 15px;
+  }
+  body.post .main-content,
+  body.index .main-content {
+    padding-top: 20px;
+    margin: 0 15px;
+    width: auto;
+  }
 }
-body.post section.home div nav ul li a {
-  text-decoration: none;
-  color: #e9e9e9;
-}
-body.post section.home div nav ul li:not(:last-child):after {
-  content: "•";
-  margin-left: 1em;
-  margin-right: 1em;
-}
-body.post div.main-content {
-  margin: 0;
-  padding-top: 125px;
-  padding-bottom: 50px;
-  background: #fff;
-}
-body.post div.main-content .hfeed {
-  max-width: 760px;
-  margin: 0 auto;
-}
-body.post div.main-content .hfeed article {
-  line-height: 1.5em;
-  font-size: 1.2em;
-  letter-spacing: 0.07em;
-}
-body.post div.main-content .hfeed article a {
-  color: #333;
-}
-body.post div.main-content .hfeed article h2,
-body.post div.main-content .hfeed article h3 {
-  font-size: 30px;
-  font-family: 'Oxygen', sans-serif;
-  margin-bottom: 15px;
-}
-body.post div.main-content .hfeed article h2 a,
-body.post div.main-content .hfeed article h3 a {
-  text-decoration: none;
-  color: #111;
-}
-body.post div.main-content .hfeed article h3 {
-  font-size: 25px;
-}
-body.post div.main-content .hfeed article p {
-  margin-bottom: 15px;
-}
-body.post div.main-content .hfeed article section {
-  margin-bottom: 35px;
+@media screen and (max-width: 400px) {
+  body.post h1,
+  body.index h1 {
+    font-size: 36px;
+  }
+  body.post>header,
+  body.index>header {
+    padding-top: 10px;
+    background-size: 760px;
+    text-align: center;
+  }
+  body.post>header .header-content nav,
+  body.index>header .header-content nav {
+    margin-left: 0;
+  }
+  body.post>header .header-content nav ul li,
+  body.index>header .header-content nav ul li {
+    display: block;
+  }
+  body.post>header .header-content nav ul li:after,
+  body.index>header .header-content nav ul li:after {
+    content: none;
+  }
+  body.post .main-content,
+  body.index .main-content {
+    padding-top: 20px;
+    margin: 0 15px;
+    width: auto;
+  }
 }
 
