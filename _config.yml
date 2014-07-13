@@ -1,5 +1,8 @@
 title: Dusty Burwell
-#url: http://www.mydomain.com
+#url: http://www.dustyburwell.com
+
+# Github repositories
+github_repo_url: https://github.com/dustyburwell/dustyburwell.github.com/
 
 markdown: rdiscount
 pygments: true

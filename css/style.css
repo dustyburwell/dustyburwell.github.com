@@ -79,8 +79,15 @@ body>header nav ul li:not(:last-child):after {
 .main-content .hfeed article p {
   margin-bottom: 15px;
 }
+.main-content .hfeed article p img {
+  max-width: 100%;
+}
 .main-content .hfeed article section {
   margin-bottom: 35px;
+}
+.main-content .hfeed article code {
+  white-space: nowrap;
+  color: #f65552;
 }
 body.index>header {
   padding-top: 250px;
