@@ -89,6 +89,12 @@ body>header nav ul li:not(:last-child):after {
   white-space: nowrap;
   color: #f65552;
 }
+.main-content .hfeed article blockquote p {
+  font-style: italic;
+  border-left: 3px solid #666;
+  margin-left: 5px;
+  padding-left: 15px;
+}
 body.index>header {
   padding-top: 250px;
   padding-bottom: 25px;
