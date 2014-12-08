@@ -1,0 +1,19 @@
+<html>
+<head>
+  <script src="jquery.js"></script>
+  <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+  <script src="cast_away.js"></script>
+  <script>
+    var castAway = new CastAway();
+    var receiver = castAway.receive()
+
+    receiver.on("displayMessage", function(data) {
+      $("#messages").append("<li>#{data.message}</li>");
+    });
+  </script>
+</head>
+<body>
+  <h1>Put Messages on Your TV!</h1>
+  <ul id="messages"></ul>
+</body>
+</html>
