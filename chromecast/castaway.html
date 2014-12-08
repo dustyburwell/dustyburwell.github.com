@@ -8,9 +8,14 @@
     var receiver = castAway.receive()
 
     receiver.on("displayMessage", function(data) {
-      $("#messages").append("<li>#{data.message}</li>");
+      $("#messages").append("<li>" + data.message + "</li>");
     });
   </script>
+  <style>
+    body {
+      background-color: white;
+    }
+  </style>
 </head>
 <body>
   <h1>Put Messages on Your TV!</h1>
