@@ -66,6 +66,7 @@ h1, h2, h3 {
   width: 350px;
   line-height: 1.4em;
   margin-bottom: 25px;
+  page-break-inside: avoid;
 }
 
 .avatar {
@@ -161,6 +162,7 @@ h1, h2, h3 {
     padding-left: 25px;
     line-height: 1.4em;
     margin-bottom: 25px;
+    page-break-inside: avoid;
   }
 
   section section > header {
