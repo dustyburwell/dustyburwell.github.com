@@ -6,27 +6,6 @@ body {
   color: #404040;
   font-family: 'Lora', 'Times New Roman', serif;
 }
-body header,
-body h1,
-body h2,
-body h3,
-body h4,
-body h5,
-body h6 {
-  font-family: 'Oxygen', 'Helvetica', sans-serif;
-  line-height: 1.5em;
-  margin-bottom: 15px;
-}
-body header a,
-body h1 a,
-body h2 a,
-body h3 a,
-body h4 a,
-body h5 a,
-body h6 a {
-  text-decoration: none;
-  color: #111;
-}
 body h1 {
   font-size: 48px;
   text-shadow: 0px 0px 4px #333;
@@ -71,10 +50,44 @@ body>header nav ul li:not(:last-child):after {
 .main-content .hfeed article {
   line-height: 1.5em;
   font-size: 1.2em;
-  letter-spacing: 0.07em;
+  letter-spacing: 0em;
+}
+.main-content .hfeed article header,
+.main-content .hfeed article h1,
+.main-content .hfeed article h2,
+.main-content .hfeed article h3,
+.main-content .hfeed article h4,
+.main-content .hfeed article h5,
+.main-content .hfeed article h6 {
+  font-family: 'Oxygen', 'Helvetica', sans-serif;
+  line-height: 1.1em;
+  margin-bottom: 30px;
+}
+.main-content .hfeed article header a,
+.main-content .hfeed article h1 a,
+.main-content .hfeed article h2 a,
+.main-content .hfeed article h3 a,
+.main-content .hfeed article h4 a,
+.main-content .hfeed article h5 a,
+.main-content .hfeed article h6 a {
+  text-decoration: none;
+  color: #66666f;
+}
+.main-content .hfeed article header a:hover,
+.main-content .hfeed article h1 a:hover,
+.main-content .hfeed article h2 a:hover,
+.main-content .hfeed article h3 a:hover,
+.main-content .hfeed article h4 a:hover,
+.main-content .hfeed article h5 a:hover,
+.main-content .hfeed article h6 a:hover {
+  text-decoration: none;
 }
 .main-content .hfeed article a {
-  color: #333;
+  color: #008aff;
+  text-decoration: none;
+}
+.main-content .hfeed article a:hover {
+  text-decoration: underline;
 }
 .main-content .hfeed article p {
   margin-bottom: 30px;
