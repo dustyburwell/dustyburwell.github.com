@@ -101,8 +101,8 @@ Claritin.
 
 ---
 
-While it's not impossible to affect cultural change toward inclusion in
-a large, established organization, it is far harder than it is to do so
-in a smaller one. It's also far easier to maintain an existing inclusive
-than to change an already exclusive one. Make the spaces you exist in
-inclusive by default while it's easy before someone has to be offended.
+It's not impossible to affect cultural change toward inclusion in a large,
+established organization. But, like the security and privacy required by
+recent regulation, it is far harder to add it later than it is to do so
+earlier on. Make the spaces you exist in inclusive by default while it's
+easy before someone has to be offended.
