@@ -6,6 +6,7 @@ author: Dusty
 tags:
 - managment
 - opinion
+- inclusion
 ---
 
 In software development, we have this idea of certain attributes that must
