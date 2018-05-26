@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Inclusivity must be built in to te system"
-description: "Stuff"
+title: "Inclusivity must be built in to the system"
+description: "Some thoughts on inclusivity"
 author: Dusty
 tags:
 - managment
@@ -90,7 +90,7 @@ offense?"
 
 Why, indeed. Left untended, uninclusive practices fester. Folks become
 accustomed to being able to speak and act in certain ways and begin to
-assign a value to that _benefit_. Exclusionary Words and phrases become
+assign a value to that _benefit_. Exclusionary words and phrases become
 ingrained and part of the cultural lexicon of the organization. So much so
 that simple word choices, something that costs us _nothing_ to alter,
 would take a herculean effort to dislodge from the collective vernacular.
