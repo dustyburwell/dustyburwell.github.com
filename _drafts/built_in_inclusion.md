@@ -18,7 +18,7 @@ These are attributes that are intrinsic to software systems in ways that are
 hard to alter as the system becomes more complex over time. 
 
 The culture of a group of people or organization, how they communicate,
-interact, and treat each other is a complex systems as well. I submit that,
+interact, and treat each other is a complex system as well. I submit that,
 like the intrinsic security of a software system, the intrinsic inclusivity
 of a  group of people is hard to alter. It's not an attribute that can be
 easily bolted on after the group has grown to hundreds or, really, dozens
