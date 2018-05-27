@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Inclusivity must be built in to the system"
-description: "Some thoughts on inclusivity"
+description: "Some thoughts on the importance of early inclusivity"
 author: Dusty
 tags:
 - managment
