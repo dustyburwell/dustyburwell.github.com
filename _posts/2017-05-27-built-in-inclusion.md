@@ -60,7 +60,7 @@ possession, above and beyond the actual value of the item.
 Now think of the puppies in the office. Similar to a mundane office supply
 handed to a participant in an experiment, the workers in that office ascribe
 a value to the _benefit_ of having puppies in their workplace. According to
-the endowment effect, those people concsiously or no think that having puppies
+the endowment effect, those people consciously or not think that having puppies
 in their office is _more valuable_ than a similar group of people who never
 have had puppies in their workplace. Those people will fight harder to _keep_
 the puppies, than they would have to acquire the puppies.
