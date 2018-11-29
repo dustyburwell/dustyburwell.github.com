@@ -25,7 +25,7 @@ got me thinking about ratchets in software systems.
 Eileen mentioned that one of the things they did 
 
 
-[0] https://twitter.com/eileencodes
-[1] https://www.hanselminutes.com
-[2] https://www.hanselminutes.com/657/upgrading-github-and-improving-rails-with-eileen-uchitelle
-[3] https://githubengineering.com/upgrading-github-from-rails-3-2-to-5-2/
+[0]: https://twitter.com/eileencodes
+[1]: https://www.hanselminutes.com
+[2]: https://www.hanselminutes.com/657/upgrading-github-and-improving-rails-with-eileen-uchitelle
+[3]: https://githubengineering.com/upgrading-github-from-rails-3-2-to-5-2/
