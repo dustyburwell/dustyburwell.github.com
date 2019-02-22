@@ -4,7 +4,6 @@ title: Dusty Burwell
 # Github repositories
 github_repo_url: https://github.com/dustyburwell/dustyburwell.github.com/
 
-markdown: rdiscount
 permalink: /:year/:month/:day/:title
 future: false
 
