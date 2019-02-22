@@ -7,7 +7,7 @@ github_repo_url: https://github.com/dustyburwell/dustyburwell.github.com/
 permalink: /:year/:month/:day/:title
 future: false
 
-markdown: rdiscount
+markdown: kramdown
 lsi: true
 paginate: 20
 
