@@ -3,7 +3,7 @@ layout: post
 title: "Inclusivity must be built in to the system"
 description: "Some thoughts on the importance of early inclusivity"
 author: Dusty
-redirect_from: "/2017/05/27/built-in-inclusion
+redirect_from: "/2017/05/27/built-in-inclusion"
 tags:
 - managment
 - opinion
