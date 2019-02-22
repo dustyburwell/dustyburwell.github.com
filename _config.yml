@@ -5,7 +5,6 @@ title: Dusty Burwell
 github_repo_url: https://github.com/dustyburwell/dustyburwell.github.com/
 
 markdown: rdiscount
-pygments: true
 permalink: /:year/:month/:day/:title
 future: false
 
@@ -14,3 +13,6 @@ paginate: 20
 
 exclude:
 - CNAME
+
+plugins:
+- jekyll-redirect-from
