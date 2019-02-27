@@ -63,7 +63,7 @@ that code again.
 ## Run tests early and often
 If test cases are provided for you, get them into a format that will run as tests quickly and run them, even if
 you're sure your solution doesn't execute. I have my local environment set up with a file watcher and 
-[Stopplicht]({% post_url 2014-07-12-stopplicht %}) so that I get quick feedback whenever I save files in my editor.
+[Stopplicht]({% post_url 2014-07-12-stopplicht.md %}) so that I get quick feedback whenever I save files in my editor.
 Again, make sure your environment is set up in advance to help you succeed. Run the test cases handed to you, run
 tests to cover requirements from the instructions, and run tests to cover edge cases. Whatever you do, never,
 never, never manually step through test cases, you’re wasting a lot of time when the computer can run through tests
