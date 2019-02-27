@@ -47,7 +47,7 @@ the comments. I can ceratinly assure you that this kind of comment has never won
 ```ruby
 # Iterate over the records
 records.each do |r|
- …
+  # ...
 end
 ```
 
