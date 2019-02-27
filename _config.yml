@@ -10,6 +10,7 @@ future: false
 markdown: kramdown
 lsi: true
 paginate: 20
+highlighter: rouge
 
 exclude:
 - CNAME
