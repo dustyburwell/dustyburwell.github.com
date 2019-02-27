@@ -99,7 +99,6 @@ body>header nav ul li:not(:last-child):after {
   margin-bottom: 35px;
 }
 .main-content .hfeed article code {
-  white-space: nowrap;
   color: #f65552;
 }
 .main-content .hfeed article blockquote {
