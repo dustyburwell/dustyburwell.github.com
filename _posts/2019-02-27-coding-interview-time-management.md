@@ -44,7 +44,7 @@ the editor as early as you can. Write tests, write method signatures, write a na
 Also, unless it helps you to internalize the problem and think through the proper solution, skip the pseudo code and
 the comments. I can ceratinly assure you that this kind of comment has never won anyone points on an interview:
 
-```
+```ruby
 # Iterate over the records
 records.each do |r|
  …
