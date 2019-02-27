@@ -208,3 +208,7 @@
   color: #f8f8f2;
   background-color: #49483e;
 }
+div.highlight {
+  padding: 5px;
+  margin-bottom: 30px;
+}
