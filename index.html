@@ -40,6 +40,7 @@ description: This is the landing page
 {% endfor %}
 
 <!-- Pagination links -->
+{% if paginator.total_pages > 1 %}
 <div class="pagination">
   {% if paginator.previous_page %}
   <a href="{{ paginator.previous_page_path }}" class="previous">
@@ -57,6 +58,7 @@ description: This is the landing page
   <span class="next ">Next</span>
   {% endif %}
 </div>
+{% endif %}
 
 
 </div>
