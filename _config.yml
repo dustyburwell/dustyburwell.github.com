@@ -17,3 +17,4 @@ exclude:
 
 plugins:
 - jekyll-redirect-from
+- jekyll-paginate

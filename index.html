@@ -6,7 +6,7 @@ description: This is the landing page
 <header>
   <div class="header-content">
     <a href="/">
-      <img src="img/gravatar.jpg"/>
+      <img src="/img/gravatar.jpg"/>
     </a>
 
     <h1>
@@ -25,16 +25,39 @@ description: This is the landing page
 
 <div class="main-content">
 <div class="hfeed">
-{% for post in site.posts limit: 4 %}
+
+<!-- This loops through the paginated posts -->
+{% for post in paginator.posts %}
 <article itemscope itemtype="http://schema.org/BlogPosting" class="post hentry">
   <header>
     <h2 itemprop="name" class="entry-title">
-    <a href="{{ site.url }}{{ post.url }}" rel="bookmark">{{ post.title }}</a>
+      <a href="{{ site.url }}{{ post.url }}" rel="bookmark">{{ post.title }}</a>
     </h2>
   </header>
 
   <section class="entry-content">{{ post.content | strip_html | truncatewords:75}}</section>
 </article>
 {% endfor %}
+
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+  <a href="{{ paginator.previous_page_path }}" class="previous">
+    Previous
+  </a>
+  {% else %}
+  <span class="previous">Previous</span>
+  {% endif %}
+  <span class="page_number ">
+    Page: {{ paginator.page }} of {{ paginator.total_pages }}
+  </span>
+  {% if paginator.next_page %}
+  <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+  {% else %}
+  <span class="next ">Next</span>
+  {% endif %}
+</div>
+
+
 </div>
 </div>
