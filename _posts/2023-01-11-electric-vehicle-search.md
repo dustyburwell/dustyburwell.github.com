@@ -57,7 +57,9 @@ cross country on a single charge.
 I was surpsired to learn, however, that there are some recent models that flip
 the equation a bit, still packing pretty decent range, but introducing much
 faster quick-charging to near near-full capacity. These would make 2 or 3 rest
-stops for charging practical.
+stops for charging practical. Mapping out our route on
+[plug-share](https://www.plugshare.com/) reveals plenty of DC fast-charging
+sites, so the charging network seems to be up to the task as well.
 
 ### Vehicle Size
 
@@ -126,3 +128,5 @@ Hoping to keep the Volt as our backup, we'll be searching for an all-electric
 Chicago winters are pushing us toward all-wheel drive models. I've started to
 compile notes on the vehicles that we're looking at, and I'll post a living
 document for those shortly.
+
+Update: [My working notes comparing possible EVs.](/2023/01/11/ev-notes)
