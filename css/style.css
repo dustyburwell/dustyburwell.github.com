@@ -2,15 +2,19 @@
   margin: 0;
   padding: 0;
 }
+
 body {
-  color: #404040;
-  font-family: 'Lora', 'Times New Roman', serif;
+  color: #425466;
+  font-family: 'Helvetica', 'Arial', sans-serif;
 }
+
 body h1 {
   font-size: 48px;
+  font-family: 'Lora', 'Times New Roman', serif;
   text-shadow: 0px 0px 4px #333;
   margin-top: 10px;
 }
+
 body>header {
   background-image: url("../img/chicago.jpg");
   background-size: 100%;
@@ -19,39 +23,47 @@ body>header {
   color: #e9e9e9;
   margin-bottom: 0;
 }
+
 body>header img {
   border-radius: 100%;
   border: 4px solid #e9e9e9;
 }
+
 body>header nav ul li {
   display: inline;
   font-size: 20px;
   text-shadow: 0px 0px 4px #333;
 }
+
 body>header nav ul li a {
   text-decoration: none;
   color: #e9e9e9;
 }
+
 body>header nav ul li:not(:last-child):after {
   content: "•";
   margin-left: 1em;
   margin-right: 1em;
 }
+
 .main-content {
   margin: 0;
   padding-top: 50px;
   padding-bottom: 50px;
   background: #fff;
 }
+
 .main-content .hfeed {
   max-width: 760px;
   margin: 0 auto;
 }
+
 .main-content .hfeed article {
   line-height: 1.5em;
   font-size: 1.2em;
   letter-spacing: 0em;
 }
+
 .main-content .hfeed article header,
 .main-content .hfeed article h1,
 .main-content .hfeed article h2,
@@ -61,8 +73,9 @@ body>header nav ul li:not(:last-child):after {
 .main-content .hfeed article h6 {
   font-family: 'Oxygen', 'Helvetica', sans-serif;
   line-height: 1.1em;
-  margin-bottom: 30px;
+  margin-bottom: 1.1em;
 }
+
 .main-content .hfeed article header a,
 .main-content .hfeed article h1 a,
 .main-content .hfeed article h2 a,
@@ -73,6 +86,7 @@ body>header nav ul li:not(:last-child):after {
   text-decoration: none;
   color: #66666f;
 }
+
 .main-content .hfeed article header a:hover,
 .main-content .hfeed article h1 a:hover,
 .main-content .hfeed article h2 a:hover,
@@ -82,109 +96,105 @@ body>header nav ul li:not(:last-child):after {
 .main-content .hfeed article h6 a:hover {
   text-decoration: none;
 }
+
 .main-content .hfeed article a {
   color: #008aff;
   text-decoration: none;
 }
+
 .main-content .hfeed article a:hover {
   text-decoration: underline;
 }
+
 .main-content .hfeed article p {
-  margin-bottom: 30px;
+  margin-bottom: 1.1em;
 }
+
 .main-content .hfeed article p img {
   max-width: 100%;
 }
+
+.main-content .hfeed article ul,
+.main-content .hfeed article ol {
+  margin-bottom: 1.1em;
+  margin-left: 1.1em;
+}
+
 .main-content .hfeed article section {
   margin-bottom: 35px;
 }
+
 .main-content .hfeed article code {
   color: #f65552;
 }
+
 .main-content .hfeed article blockquote {
   border-left: 3px solid #666;
   margin-left: 5px;
 }
+
 .main-content .hfeed article blockquote p {
   font-style: italic;
   padding-left: 15px;
 }
+
 body.index>header {
   padding-top: 250px;
   padding-bottom: 25px;
   text-align: center;
 }
+
 body.index>header img {
   margin: 0 auto;
   width: 100px;
   height: 100px;
 }
+
 body.post>header {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 body.post>header .header-content {
   max-width: 760px;
   margin: 0 auto;
 }
+
 body.post>header .header-content h1 {
   display: none;
 }
+
 body.post>header .header-content img {
   width: 50px;
   height: 50px;
   vertical-align: middle;
 }
+
 body.post>header .header-content nav {
   margin-left: 20px;
   position: relative;
   top: 5px;
 }
+
 body.post>header .header-content nav,
 body.post>header .header-content nav ul {
   display: inline;
 }
+
 @media screen and (max-width: 780px) {
+
   body.post>header,
   body.index>header {
     padding-top: 10px;
     background-size: 760px;
     width: 100%;
   }
+
   body.post>header .header-content,
   body.index>header .header-content {
     margin: 0 15px;
   }
-  body.post .main-content,
-  body.index .main-content {
-    padding-top: 20px;
-    margin: 0 15px;
-    width: auto;
-  }
-}
-@media screen and (max-width: 400px) {
-  body.post h1,
-  body.index h1 {
-    font-size: 36px;
-  }
-  body.post>header,
-  body.index>header {
-    padding-top: 10px;
-    background-size: 760px;
-    text-align: center;
-  }
-  body.post>header .header-content nav,
-  body.index>header .header-content nav {
-    margin-left: 0;
-  }
-  body.post>header .header-content nav ul li,
-  body.index>header .header-content nav ul li {
-    display: block;
-  }
-  body.post>header .header-content nav ul li:after,
-  body.index>header .header-content nav ul li:after {
-    content: none;
-  }
+
   body.post .main-content,
   body.index .main-content {
     padding-top: 20px;
@@ -193,3 +203,39 @@ body.post>header .header-content nav ul {
   }
 }
 
+@media screen and (max-width: 400px) {
+
+  body.post h1,
+  body.index h1 {
+    font-size: 36px;
+  }
+
+  body.post>header,
+  body.index>header {
+    padding-top: 10px;
+    background-size: 760px;
+    text-align: center;
+  }
+
+  body.post>header .header-content nav,
+  body.index>header .header-content nav {
+    margin-left: 0;
+  }
+
+  body.post>header .header-content nav ul li,
+  body.index>header .header-content nav ul li {
+    display: block;
+  }
+
+  body.post>header .header-content nav ul li:after,
+  body.index>header .header-content nav ul li:after {
+    content: none;
+  }
+
+  body.post .main-content,
+  body.index .main-content {
+    padding-top: 20px;
+    margin: 0 15px;
+    width: auto;
+  }
+}
