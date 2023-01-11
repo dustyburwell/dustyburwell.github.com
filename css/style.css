@@ -73,7 +73,7 @@ body>header nav ul li:not(:last-child):after {
 .main-content .hfeed article h6 {
   font-family: 'Oxygen', 'Helvetica', sans-serif;
   line-height: 1.1em;
-  margin-bottom: 1.1em;
+  margin-bottom: 0.8em;
 }
 
 .main-content .hfeed article header a,
