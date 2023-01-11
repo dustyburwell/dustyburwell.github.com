@@ -89,8 +89,8 @@ $80,000 for trucks and full-size SUVs.
 The state of Illinois is also offering a $4000 rebate on the purchase of a
 new _or used_ _fully electric_ vehicle. The program is somewhat confusing,
 though. The website lists provisions for the rebate running through 2028, but
-the rebate is run in quarterly cycles, with the current cycle ending Jan 31,
-2023. Another cycle starting depends on if there's remaining dollars in the
+the rebate is run in quarterly cycles, with the current cycle ending Jan 31, 2023.
+Another cycle starting depends on if there's remaining dollars in the
 fund and/or additional if additional funding is made available. With J.B.
 Pritzker's re-election this year, it seems possible that the program will
 continue, but it's not guaranteed.
