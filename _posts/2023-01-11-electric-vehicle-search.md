@@ -88,6 +88,8 @@ vehicle. This can be a hybrid, PH-EV, or fully-EV. Caveat, the vehicle has to
 be assembled in the US and have an MSRP of under $55,000 for "cars" or under
 $80,000 for trucks and full-size SUVs.
 
+[Federal tax credit info](https://www.irs.gov/credits-deductions/credits-for-new-clean-vehicles-purchased-in-2023-or-after)
+
 The state of Illinois is also offering a $4000 rebate on the purchase of a
 new _or used_ _fully electric_ vehicle. The program is somewhat confusing,
 though. The website lists provisions for the rebate running through 2028, but
@@ -96,6 +98,8 @@ Another cycle starting depends on if there's remaining dollars in the
 fund and/or additional if additional funding is made available. With J.B.
 Pritzker's re-election this year, it seems possible that the program will
 continue, but it's not guaranteed.
+
+[Illinois rebate info](https://www2.illinois.gov/epa/topics/ceja/Pages/Electric-Vehicle-Rebates.aspx)
 
 ### What about PH-EV?
 
