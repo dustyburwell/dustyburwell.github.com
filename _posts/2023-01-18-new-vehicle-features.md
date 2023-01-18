@@ -64,6 +64,8 @@ EV6 a couple of weeks ago. I was surprised when I flicked on the turn signal
 to find that a video popped up on the instrument cluster, showing me the view
 of the side-view mirror and then some.
 
+![EV6 Blind Spot Camera](/img/posts/car-features/ev6-blindspot-camera.webp)
+
 This seems like a great safety feature, bringing the view of the side directly
 into view, keeping the driver from needing to take their eyes off the road to
 check the mirror. I especially appreciate this feature as an occasional
@@ -82,8 +84,10 @@ Head-up displays are _not_, by anymeans, new. I had a friend in high-school
 that drove an delapidated Oldsmobile Delta 88 that had one. I still remember
 the two green 7-segment displays shining on friday night cruises through town.
 
+![EV6 Head-up display](/img/posts/car-features/head-up-display.webp)
+
 Head-up displays on most newer cars haven't changed much from that Delta 88, to
-be honest. The most common is just a basic speed display. The display in the
-EV6 takes things to another level, though. It integrates an "augmented reality"
-approach, placing navigational aids in front of the driver to indicate lane
-changes and streets to turn on.
+be honest. The most common is just a basic speed display. But the display in the
+EV6 takes things to another level. The EV6 integrates a full color HUD,
+incorporating "augmented reality" information, even placing navigational aids in
+front of the driver to indicate lane changes and streets to turn on.
