@@ -252,4 +252,3 @@ Best regards,<br/>
 [Your Name]<br/>
 [Fitness Club for Moms]
 </p>
-</blockquote>
