@@ -64,31 +64,43 @@ to convince them to join.
 Response:
 
 <blockquote>
-Dear [Customer],
+<p>Dear [Customer],</p>
 
+<p>
 Thank you for trying out our class at [Fitness Club for Moms]. We're glad you
 enjoyed it and hope to see you back soon.
+</p>
 
+<p>
 We understand that cost is a concern for many of our members, which is why we
 offer a variety of membership options to suit different budgets. Our monthly
 membership is a great value, with access to all of our classes and amenities,
 as well as discounts on special events and workshops.
+</p>
 
+<p>
 We also offer a "buddy pass" option where members can bring a friend to class
 for free. This can be a great way to save money and also share the experience
 with a friend.
+</p>
 
-> But most importantly, investing in your health and wellness is an investment
+<p>
+But most importantly, investing in your health and wellness is an investment
 in yourself. We believe that taking care of your body and mind is essential
 for living a happy and fulfilling life. Our classes are designed to help you
 do just that, and we're here to support you every step of the way.
+</p>
 
+<p>
 If you have any more questions or concerns, please don't hesitate to reach
 out. We're always happy to help.
+</p>
 
-Best,
-[Your Name]
+<p>
+Best,<br/>
+[Your Name]<br/>
 [Fitness Club for Moms]
+</p>
 </blockquote>
 
 Note, I didn't say anything about a "buddy pass" and we don't offer a buddy pass.
@@ -134,17 +146,25 @@ is at 8 am. Can you help me write a draft?
 Response:
 
 <blockquote>
-Hi [Client],
+<p>Hi [Client],</p>
 
+<p>
 Welcome to [Fitness Class]! I'm looking forward to having you in class
 tomorrow at 8 am at [Location].
+</p>
 
+<p>
 Please bring dumbbells if you have them, but don't worry if you don't -
 you can borrow a set of weight bars from me.
+</p>
 
+<p>
 See you tomorrow!
+</p>
 
+<p>
 Best, [Your Name]
+</p>
 </blockquote>
 
 I forgot that the client also needs a yoga mat and should bring a water bottle.
@@ -155,18 +175,22 @@ Prompt: Oh, she also needs a yoga mat and water bottle.
 Response:
 
 <blockquote>
-Hi [Client],
+<p>Hi [Client],</p>
 
+<p>
 Welcome to [Fitness Class]! I'm looking forward to having you in class
 tomorrow at 8 am at [Location].
+</p>
 
+<p>
 Please bring a yoga mat, a water bottle, and dumbbells if you have them.
 If you don't have dumbbells, don't worry - you can borrow a set of weight
 bars from me.
+</p>
 
-See you tomorrow!
+<p>See you tomorrow!</p>
 
-Best, [Your Name]
+<p>Best, [Your Name]</p>
 </blockquote>
 
 This example is interesting to me. The written email is actually shorter than
@@ -182,36 +206,50 @@ convince them to stay?
 Response:
 
 <blockquote>
-Dear [Client],
+<p>Dear [Client],
 
+<p>
 I was sorry to hear that you've decided to cancel your membership with us at
 [Fitness Club for Moms]. We value your time and understand that life can be
 busy, but I wanted to reach out and see if there's anything we can do to help
 you reconsider your decision.
+</p>
 
+<p>
 One of the benefits of our club is that it's a flexible and convenient way to
 stay active and healthy. Our classes are designed to accommodate a variety of
 schedules, and we offer early morning, afternoon, and evening options to help
 you find the right fit.
+</p>
 
+<p>
 Additionally, our online class platform makes it easy to join a class from
 anywhere, so you can stay on track even if you're unable to come to the club
 in person.
+</p>
 
+<p>
 I'd also like to point out that physical activity has been shown to improve
 energy levels and reduce stress, which can help you make the most of your
 busy schedule. By taking care of your body and mind, you'll be better
 equipped to handle the demands of daily life.
+</p>
 
+<p>
 Finally, I want to let you know that we're here to support you and help you
 reach your goals, no matter what. Whether you need help finding a class that
 works for your schedule or need some extra motivation, we're here to help.
+</p>
 
+<p>
 I hope this information has been helpful, and I look forward to hearing back
 from you. If there's anything else I can do to help, please don't hesitate to
 reach out.
+</p>
 
-Best regards,
-[Your Name]
+<p>
+Best regards,<br/>
+[Your Name]<br/>
 [Fitness Club for Moms]
+</p>
 </blockquote>
