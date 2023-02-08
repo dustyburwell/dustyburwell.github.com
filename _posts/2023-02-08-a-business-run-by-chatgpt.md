@@ -63,9 +63,10 @@ to convince them to join.
 
 Response:
 
-> Dear [Customer],
+<blockquote>
+Dear [Customer],
 
-> Thank you for trying out our class at [Fitness Club for Moms]. We're glad you
+Thank you for trying out our class at [Fitness Club for Moms]. We're glad you
 enjoyed it and hope to see you back soon.
 
 We understand that cost is a concern for many of our members, which is why we
@@ -88,6 +89,7 @@ out. We're always happy to help.
 Best,
 [Your Name]
 [Fitness Club for Moms]
+</blockquote>
 
 Note, I didn't say anything about a "buddy pass" and we don't offer a buddy pass.
 You can see this as a flaw, but we actually chose to see this as idea generation.
@@ -131,7 +133,8 @@ is at 8 am. Can you help me write a draft?
 
 Response:
 
-> Hi [Client],
+<blockquote>
+Hi [Client],
 
 Welcome to [Fitness Class]! I'm looking forward to having you in class
 tomorrow at 8 am at [Location].
@@ -142,6 +145,7 @@ you can borrow a set of weight bars from me.
 See you tomorrow!
 
 Best, [Your Name]
+</blockquote>
 
 I forgot that the client also needs a yoga mat and should bring a water bottle.
 ChatGPT is great at modifying it's drafts with new information.
@@ -150,7 +154,8 @@ Prompt: Oh, she also needs a yoga mat and water bottle.
 
 Response:
 
-> Hi [Client],
+<blockquote>
+Hi [Client],
 
 Welcome to [Fitness Class]! I'm looking forward to having you in class
 tomorrow at 8 am at [Location].
@@ -162,6 +167,7 @@ bars from me.
 See you tomorrow!
 
 Best, [Your Name]
+</blockquote>
 
 This example is interesting to me. The written email is actually shorter than
 the prompt. But, what's useful here is that ChatGPT was able to take a set of
@@ -175,7 +181,8 @@ convince them to stay?
 
 Response:
 
-> Dear [Client],
+<blockquote>
+Dear [Client],
 
 I was sorry to hear that you've decided to cancel your membership with us at
 [Fitness Club for Moms]. We value your time and understand that life can be
@@ -207,3 +214,4 @@ reach out.
 Best regards,
 [Your Name]
 [Fitness Club for Moms]
+</blockquote>
