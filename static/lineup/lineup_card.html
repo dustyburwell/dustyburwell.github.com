@@ -1,473 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Baseball Lineup Card</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #ffffff;
-      --bg-secondary: #f5f5f3;
-      --bg-tertiary: #eeede9;
-      --text: #1a1a18;
-      --text-secondary: #6b6b67;
-      --text-tertiary: #9b9b96;
-      --border: rgba(0,0,0,0.12);
-      --border-md: rgba(0,0,0,0.22);
-      --radius-md: 8px;
-      --radius-lg: 12px;
-      --green-light: #C0DD97;
-      --green-dark: #3B6D11;
-      --blue-light: #B5D4F4;
-      --blue-dark: #0C447C;
-      --amber-light: #FAC775;
-      --amber-dark: #633806;
-      --pink-light: #F4C0D1;
-      --pink-dark: #72243E;
-      --purple-light: #CECBF6;
-      --purple-dark: #3C3489;
-      --font: 'Georgia', serif;
-      --font-ui: system-ui, -apple-system, sans-serif;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1c1c1a;
-        --bg-secondary: #252523;
-        --bg-tertiary: #2e2e2b;
-        --text: #f0efe9;
-        --text-secondary: #a8a8a2;
-        --text-tertiary: #6b6b67;
-        --border: rgba(255,255,255,0.1);
-        --border-md: rgba(255,255,255,0.2);
-        --green-light: #3B6D11;
-        --green-dark: #C0DD97;
-        --blue-light: #0C447C;
-        --blue-dark: #B5D4F4;
-        --amber-light: #633806;
-        --amber-dark: #FAC775;
-        --pink-light: #72243E;
-        --pink-dark: #F4C0D1;
-        --purple-light: #3C3489;
-        --purple-dark: #CECBF6;
-      }
-    }
-
-    html, body { height: 100%; }
-    body {
-      font-family: var(--font-ui);
-      background: var(--bg-tertiary);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 2rem 1rem 4rem;
-    }
-
-    .page { max-width: 820px; margin: 0 auto; }
-
-    /* Header */
-    .site-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 2rem;
-    }
-    .site-header h1 {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--text);
-      font-family: var(--font-ui);
-    }
-    .site-header p {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 2px;
-    }
-
-    /* Input card */
-    .input-card {
-      background: var(--bg);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .input-card h2 {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 1rem;
-    }
-    .meta-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-    input[type="text"] {
-      flex: 1;
-      min-width: 160px;
-      padding: 8px 12px;
-      font-size: 14px;
-      font-family: var(--font-ui);
-      border: 0.5px solid var(--border-md);
-      border-radius: var(--radius-md);
-      background: var(--bg-secondary);
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.15s;
-    }
-    input[type="text"]:focus { border-color: var(--text-secondary); }
-
-    .paste-label {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-bottom: 6px;
-    }
-    textarea {
-      width: 100%;
-      height: 130px;
-      font-family: 'Menlo', 'Courier New', monospace;
-      font-size: 12px;
-      padding: 10px 12px;
-      border: 0.5px solid var(--border-md);
-      border-radius: var(--radius-md);
-      background: var(--bg-secondary);
-      color: var(--text);
-      resize: vertical;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-    textarea:focus { border-color: var(--text-secondary); }
-
-    .btn-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-    button {
-      padding: 8px 18px;
-      font-size: 13px;
-      font-family: var(--font-ui);
-      border: 0.5px solid var(--border-md);
-      border-radius: var(--radius-md);
-      background: transparent;
-      color: var(--text);
-      cursor: pointer;
-      transition: background 0.15s, opacity 0.15s;
-    }
-    button:hover { background: var(--bg-secondary); }
-    button.primary {
-      background: var(--text);
-      color: var(--bg);
-      border-color: var(--text);
-    }
-    button.primary:hover { opacity: 0.82; }
-
-    .hint-block {
-      margin-top: 1rem;
-      padding: 10px 14px;
-      background: var(--bg-secondary);
-      border-radius: var(--radius-md);
-      font-size: 12px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    .hint-block code {
-      font-family: 'Menlo', monospace;
-      background: var(--bg-tertiary);
-      padding: 1px 5px;
-      border-radius: 4px;
-      font-size: 11px;
-    }
-
-    .error {
-      font-size: 13px;
-      color: #a32d2d;
-      background: #fcebeb;
-      border: 0.5px solid #f09595;
-      border-radius: var(--radius-md);
-      padding: 10px 14px;
-      margin-bottom: 1rem;
-      display: none;
-    }
-    @media (prefers-color-scheme: dark) {
-      .error { color: #f09595; background: #2a1414; border-color: #a32d2d; }
-    }
-
-    /* Output card */
-    .output-card {
-      background: var(--bg);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      display: none;
-    }
-
-    .output-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.25rem;
-      border-bottom: 0.5px solid var(--border);
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .output-title { font-size: 16px; font-weight: 600; color: var(--text); }
-    .output-game { font-size: 13px; color: var(--text-secondary); margin-left: 8px; }
-
-    .view-toggle { display: flex; gap: 6px; }
-    .view-toggle button { font-size: 12px; padding: 5px 12px; }
-    .view-toggle button.active {
-      background: var(--bg-secondary);
-      font-weight: 600;
-      border-color: var(--border-md);
-    }
-
-    /* Inning tabs */
-    .innings-nav {
-      display: flex;
-      border-bottom: 0.5px solid var(--border);
-      overflow-x: auto;
-      scrollbar-width: thin;
-    }
-    .inning-tab {
-      padding: 10px 22px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      white-space: nowrap;
-      transition: color 0.15s;
-      user-select: none;
-    }
-    .inning-tab:hover { color: var(--text); }
-    .inning-tab.active {
-      color: var(--text);
-      border-bottom-color: var(--text);
-      font-weight: 600;
-    }
-
-    /* Field view */
-    .field-view {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    @media (max-width: 560px) {
-      .field-view { grid-template-columns: 1fr; }
-      .field-section:first-child { border-right: none; border-bottom: 0.5px solid var(--border); }
-    }
-    .field-section { padding: 1.25rem 1.5rem; }
-    .field-section:first-child { border-right: 0.5px solid var(--border); }
-
-    .section-label {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
-    }
-
-    .position-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 7px 0;
-      border-bottom: 0.5px solid var(--border);
-    }
-    .position-row:last-child { border-bottom: none; }
-
-    .pos-badge {
-      width: 34px;
-      height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 700;
-      border-radius: 4px;
-      flex-shrink: 0;
-      letter-spacing: 0.02em;
-    }
-    .pos-pitcher  { background: var(--amber-light);  color: var(--amber-dark); }
-    .pos-catcher  { background: var(--blue-light);   color: var(--blue-dark); }
-    .pos-infield  { background: var(--green-light);  color: var(--green-dark); }
-    .pos-outfield { background: var(--pink-light);   color: var(--pink-dark); }
-    .pos-dh       { background: var(--purple-light); color: var(--purple-dark); }
-    .pos-bench    { background: var(--bg-secondary); color: var(--text-secondary); border: 0.5px solid var(--border); }
-
-    .player-name  { font-size: 14px; color: var(--text); }
-    .player-pos-name { font-size: 11px; color: var(--text-tertiary); margin-left: auto; }
-    .player-empty { font-size: 14px; color: var(--text-tertiary); font-style: italic; }
-
-    /* Overview table */
-    .overview-wrap { overflow-x: auto; }
-    .overview-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-    .overview-table th {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 9px 12px;
-      text-align: left;
-      border-bottom: 0.5px solid var(--border);
-      background: var(--bg-secondary);
-      white-space: nowrap;
-    }
-    .overview-table td {
-      padding: 8px 12px;
-      border-bottom: 0.5px solid var(--border);
-      color: var(--text);
-      white-space: nowrap;
-      vertical-align: middle;
-    }
-    .overview-table tr:last-child td { border-bottom: none; }
-    .overview-table .pos-cell {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .pos-name-small { font-size: 12px; color: var(--text-secondary); }
-    .empty-cell { color: var(--text-tertiary); }
-  </style>
-</head>
-<body>
-<div class="page">
-
-  <div class="site-header">
-    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="14" y="2" width="8" height="8" rx="1.5" fill="#C0DD97" stroke="#3B6D11" stroke-width="1.2"/>
-      <rect x="2" y="14" width="8" height="8" rx="1.5" fill="#C0DD97" stroke="#3B6D11" stroke-width="1.2"/>
-      <rect x="26" y="14" width="8" height="8" rx="1.5" fill="#C0DD97" stroke="#3B6D11" stroke-width="1.2"/>
-      <rect x="14" y="26" width="8" height="8" rx="1.5" fill="#FAC775" stroke="#633806" stroke-width="1.2"/>
-      <polygon points="18,5 5,18 18,31 31,18" fill="none" stroke="#3B6D11" stroke-width="1" stroke-dasharray="2.5,2.5"/>
-    </svg>
-    <div>
-      <h1>Baseball Lineup Card</h1>
-      <p>Paste your Google Sheet data to view positions by inning</p>
-    </div>
-  </div>
-
-  <div class="input-card">
-    <h2>Team &amp; Game Info</h2>
-    <div class="meta-row">
-      <input type="text" id="teamName" placeholder="Team name (optional)" />
-      <input type="text" id="gameName" placeholder="Game / date (optional)" />
-    </div>
-
-    <div class="paste-label">Paste spreadsheet data (copy directly from Google Sheets — rows = positions, columns = innings)</div>
-    <textarea id="pasteArea" placeholder="Position&#9;Inning 1&#9;Inning 2&#9;Inning 3&#9;...
-P&#9;Smith&#9;Smith&#9;Jones
-C&#9;Lopez&#9;Lopez&#9;Lopez
-1B&#9;Kim&#9;Kim&#9;Kim
-2B&#9;Patel&#9;Chen&#9;Chen
-..."></textarea>
-
-    <div class="btn-row">
-      <button class="primary" onclick="loadData()">Load lineup</button>
-      <button onclick="loadSample()">Load sample data</button>
-      <button onclick="clearAll()">Clear</button>
-    </div>
-
-    <div class="hint-block">
-      <strong>Positions recognized:</strong>
-      <code>P</code> <code>C</code> <code>1B</code> <code>2B</code> <code>3B</code> <code>SS</code>
-      <code>LF</code> <code>LC</code> <code>CF</code> <code>RC</code> <code>RF</code>
-      <code>DH</code> / <code>DH1</code> / <code>DH2</code> &nbsp;·&nbsp;
-      <code>Bench</code> / <code>Bench1</code> / <code>Bench2</code><br>
-      First column = position abbreviation. Subsequent columns = player name per inning (up to 9).
-    </div>
-  </div>
-
-  <div id="errorMsg" class="error"></div>
-
-  <div class="output-card" id="outputCard">
-    <div class="output-header">
-      <div>
-        <span class="output-title" id="outputTitle"></span>
-        <span class="output-game" id="outputGame"></span>
-      </div>
-      <div class="view-toggle">
-        <button id="btnInning" class="active" onclick="setView('inning')">By inning</button>
-        <button id="btnOverview" onclick="setView('overview')">Full overview</button>
-      </div>
-    </div>
-
-    <!-- Inning view -->
-    <div id="viewInning">
-      <div class="innings-nav" id="inningsNav"></div>
-      <div id="inningContent"></div>
-    </div>
-
-    <!-- Overview view -->
-    <div id="viewOverview" style="display:none;">
-      <div class="overview-wrap">
-        <table class="overview-table" id="overviewTable"></table>
-      </div>
-    </div>
-  </div>
-
-</div>
-
 <script>
   const INFIELD  = ['P','C','1B','2B','3B','SS'];
   const OUTFIELD = ['LF','LC','CF','RC','RF'];
-  const EXTRAS   = ['DH1','DH2','Bench1','Bench2'];
 
-  const POS_LABELS = {
-    P:'P', C:'C', '1B':'1B', '2B':'2B', '3B':'3B', SS:'SS',
-    LF:'LF', LC:'LC', CF:'CF', RC:'RC', RF:'RF',
-    DH1:'DH', DH2:'DH', Bench1:'BN', Bench2:'BN'
-  };
+  const TEAM_NAME = 'Your Team';
+  const GAME_NAME = 'Game / date';
 
-  const POS_FRIENDLY = {
-    P:'Pitcher', C:'Catcher', '1B':'First Base', '2B':'Second Base',
-    '3B':'Third Base', SS:'Shortstop', LF:'Left Field', LC:'Left-Center',
-    CF:'Center Field', RC:'Right-Center', RF:'Right Field',
-    DH1:'DH / Utility', DH2:'DH / Utility', Bench1:'Bench', Bench2:'Bench'
-  };
+  const STATIC_TSV = `
+	1	2	3	4	5	6
+P	Isaac	Isaac	Isaac	Mateo C	Mateo C	Mateo C
+C	Mateo S	Pyeonghwa	Fitz	Theo	Max	Ryder
+1B	Elison	Elison	Elison	Elison	Elison	Elison
+2B	Pyeonghwa	Fitz	Mateo S	Max	Ryder	Theo
+SS	Joe	Joe	Joe	Mateo D	Mateo D	Mateo D
+3B	Ethan	Ethan	Ethan	KJ	KJ	KJ
+LF	Ryder	Ryder	Ryder	Mateo S	Mateo S	Mateo S
+LC	KJ	Mateo D	Mateo C	Isaac	Joe	Ethan
+CF	Mateo D	Mateo C	KJ	Joe	Ethan	Isaac
+RC	Max	Max	Max	Pyeonghwa	Pyeonghwa	Pyeonghwa
+RF	Theo	Theo	Theo	Fitz	Fitz	Fitz
+						
+EH	Mateo C	Mateo S	Pyeonghwa	Ethan	Isaac	Joe
+EH	Fitz	KJ	Mateo D	Ryder	Theo	Max
+  `.trim();
 
-  const POS_CLASS = {
-    P:'pos-pitcher', C:'pos-catcher',
-    '1B':'pos-infield','2B':'pos-infield','3B':'pos-infield',SS:'pos-infield',
-    LF:'pos-outfield',LC:'pos-outfield',CF:'pos-outfield',RC:'pos-outfield',RF:'pos-outfield',
-    DH1:'pos-dh',DH2:'pos-dh',
-    Bench1:'pos-bench',Bench2:'pos-bench'
+  const POS_FRIENDLY_BASE = {
+    P: 'Pitcher',
+    C: 'Catcher',
+    '1B': 'First Base',
+    '2B': 'Second Base',
+    '3B': 'Third Base',
+    SS: 'Shortstop',
+    LF: 'Left Field',
+    LC: 'Left-Center',
+    CF: 'Center Field',
+    RC: 'Right-Center',
+    RF: 'Right Field',
+    EH: 'Extra Hitter',
+    DH: 'DH / Utility',
+    Bench: 'Bench'
   };
 
   let lineupData = null;
   let currentInning = 0;
   let currentView = 'inning';
 
-  function normalizePos(raw) {
-    const r = raw.replace(/\s+/g,'').toUpperCase();
-    if (['P','PITCHER'].includes(r)) return 'P';
-    if (['C','CATCHER'].includes(r)) return 'C';
-    if (['1B','FIRSTBASE'].includes(r)) return '1B';
-    if (['2B','SECONDBASE'].includes(r)) return '2B';
-    if (['3B','THIRDBASE'].includes(r)) return '3B';
-    if (['SS','SHORTSTOP'].includes(r)) return 'SS';
-    if (['LF','LEFTFIELD'].includes(r)) return 'LF';
-    if (['LC','LEFTCENTER','LEFTCENTERFIELD'].includes(r)) return 'LC';
-    if (['CF','CENTERFIELD'].includes(r)) return 'CF';
-    if (['RC','RIGHTCENTER','RIGHTCENTERFIELD'].includes(r)) return 'RC';
-    if (['RF','RIGHTFIELD'].includes(r)) return 'RF';
-    if (['DH','DH1'].includes(r)) return 'DH1';
-    if (['DH2'].includes(r)) return 'DH2';
-    if (['BENCH','BN','BENCH1'].includes(r)) return 'Bench1';
-    if (['BENCH2','BN2'].includes(r)) return 'Bench2';
+  function normalizeBasePos(raw) {
+    const r = String(raw).replace(/\s+/g, '').toUpperCase();
+
+    if (['P', 'PITCHER'].includes(r)) return 'P';
+    if (['C', 'CATCHER'].includes(r)) return 'C';
+    if (['1B', 'FIRSTBASE'].includes(r)) return '1B';
+    if (['2B', 'SECONDBASE'].includes(r)) return '2B';
+    if (['3B', 'THIRDBASE'].includes(r)) return '3B';
+    if (['SS', 'SHORTSTOP'].includes(r)) return 'SS';
+    if (['LF', 'LEFTFIELD'].includes(r)) return 'LF';
+    if (['LC', 'LEFTCENTER', 'LEFTCENTERFIELD'].includes(r)) return 'LC';
+    if (['CF', 'CENTERFIELD'].includes(r)) return 'CF';
+    if (['RC', 'RIGHTCENTER', 'RIGHTCENTERFIELD'].includes(r)) return 'RC';
+    if (['RF', 'RIGHTFIELD'].includes(r)) return 'RF';
+
+    if (['EH', 'EH1', 'EH2', 'EXTRAHITTER'].includes(r)) return 'EH';
+    if (['DH', 'DH1', 'DH2'].includes(r)) return 'DH';
+    if (['BENCH', 'BN', 'BENCH1', 'BENCH2'].includes(r)) return 'Bench';
+
     return null;
+  }
+
+  function isExtraPos(pos) {
+    return pos.startsWith('EH') || pos.startsWith('DH') || pos.startsWith('Bench');
+  }
+
+  function getBasePos(pos) {
+    if (pos.startsWith('EH')) return 'EH';
+    if (pos.startsWith('DH')) return 'DH';
+    if (pos.startsWith('Bench')) return 'Bench';
+    return pos;
+  }
+
+  function getPosLabel(pos) {
+    const base = getBasePos(pos);
+    if (base === 'EH') return 'EH';
+    if (base === 'DH') return 'DH';
+    if (base === 'Bench') return 'BN';
+    return pos;
+  }
+
+  function getPosFriendly(pos) {
+    return POS_FRIENDLY_BASE[getBasePos(pos)] || pos;
+  }
+
+  function getPosClass(pos) {
+    const base = getBasePos(pos);
+    if (base === 'P') return 'pos-pitcher';
+    if (base === 'C') return 'pos-catcher';
+    if (['1B','2B','3B','SS'].includes(base)) return 'pos-infield';
+    if (['LF','LC','CF','RC','RF'].includes(base)) return 'pos-outfield';
+    if (['EH','DH'].includes(base)) return 'pos-dh';
+    if (base === 'Bench') return 'pos-bench';
+    return 'pos-bench';
   }
 
   function showErr(msg) {
@@ -480,100 +110,114 @@ C&#9;Lopez&#9;Lopez&#9;Lopez
     document.getElementById('errorMsg').style.display = 'none';
   }
 
-  function loadData() {
-    clearErr();
-    const raw = document.getElementById('pasteArea').value.trim();
-    if (!raw) { showErr('Please paste your spreadsheet data first.'); return; }
+  function parseStaticTSV(tsv) {
+    const rows = tsv
+      .split(/\r?\n/)
+      .map(line => line.split('\t').map(cell => cell.trim()))
+      .filter(row => row.some(cell => cell !== ''));
 
-    const rows = raw.split('\n').map(r => r.split('\t').map(c => c.trim()));
-    if (rows.length < 2) { showErr('Need at least a header row and one data row.'); return; }
-
-    const firstCell = (rows[0][0] || '').toLowerCase();
-    const hasHeader = firstCell === 'position' || firstCell === 'pos' || firstCell === '';
-    const dataRows = hasHeader ? rows.slice(1) : rows;
-    const inningCount = rows[0].length - 1;
-
-    if (inningCount < 1 || inningCount > 9) {
-      showErr('Expected 1–9 inning columns after the position column. Found ' + inningCount + '.');
-      return;
+    if (rows.length < 2) {
+      throw new Error('Static lineup data needs a header row and at least one player row.');
     }
 
-    const inningLabels = hasHeader
-      ? rows[0].slice(1).map((h, i) => h || 'Inning ' + (i + 1))
-      : Array.from({ length: inningCount }, (_, i) => 'Inning ' + (i + 1));
+    const headerRow = rows[0];
+    const inningCount = headerRow.length - 1;
+
+    if (inningCount < 1 || inningCount > 9) {
+      throw new Error('Expected 1–9 inning columns after the position column. Found ' + inningCount + '.');
+    }
+
+    const inningLabels = headerRow
+      .slice(1)
+      .map((h, i) => h || String(i + 1));
 
     const data = {};
-    dataRows.forEach(row => {
+    const extraPosOrder = [];
+    const extraCounts = { EH: 0, DH: 0, Bench: 0 };
+
+    rows.slice(1).forEach(row => {
       if (!row[0]) return;
-      const pos = normalizePos(row[0]);
-      if (!pos) return;
+
+      const basePos = normalizeBasePos(row[0]);
+      if (!basePos) return;
+
+      let pos = basePos;
+
+      if (['EH', 'DH', 'Bench'].includes(basePos)) {
+        extraCounts[basePos] += 1;
+        pos = basePos + extraCounts[basePos];
+        extraPosOrder.push(pos);
+      }
+
       if (!data[pos]) data[pos] = [];
-      for (let i = 0; i < inningCount; i++) data[pos].push(row[i + 1] || '');
+
+      for (let i = 0; i < inningCount; i++) {
+        data[pos][i] = row[i + 1] || '';
+      }
     });
 
     if (Object.keys(data).length === 0) {
-      showErr('No recognizable positions found. Make sure the first column uses abbreviations like P, C, 1B, 2B, 3B, SS, LF, LC, CF, RC, RF, DH, Bench.');
-      return;
+      throw new Error('No recognizable positions found in the static lineup data.');
     }
 
-    lineupData = { data, inningLabels, inningCount };
-    currentInning = 0;
-    renderOutput();
+    return {
+      teamName: TEAM_NAME,
+      gameName: GAME_NAME,
+      data,
+      inningLabels,
+      inningCount,
+      extraPosOrder
+    };
   }
 
-  function loadSample() {
-    const sample = [
-      ['Position','Inning 1','Inning 2','Inning 3','Inning 4','Inning 5','Inning 6'],
-      ['P','Rivera','Rivera','Rivera','Johnson','Johnson','Johnson'],
-      ['C','Martinez','Martinez','Martinez','Martinez','Martinez','Martinez'],
-      ['1B','Kim','Kim','Kim','Kim','Kim','Kim'],
-      ['2B','Patel','Patel','Chen','Chen','Chen','Chen'],
-      ['3B','Brown','Brown','Brown','Brown','Brown','Brown'],
-      ['SS','Garcia','Garcia','Garcia','Garcia','Garcia','Garcia'],
-      ['LF','Wilson','Torres','Torres','Torres','Wilson','Wilson'],
-      ['LC','Torres','Wilson','Wilson','Wilson','Torres','Torres'],
-      ['CF','Lee','Lee','Lee','Lee','Lee','Lee'],
-      ['RC','Adams','Adams','Adams','Adams','Adams','Adams'],
-      ['RF','Nguyen','Nguyen','Nguyen','Nguyen','Nguyen','Nguyen'],
-      ['DH','Scott','Scott','Scott','Scott','Scott','Scott'],
-      ['Bench1','Chen','Patel','Patel','Patel','Patel','Patel'],
-      ['Bench2','Torres','','','','',''],
-    ].map(r => r.join('\t')).join('\n');
-    document.getElementById('pasteArea').value = sample;
-    document.getElementById('teamName').value = 'Riverside Eagles';
-    document.getElementById('gameName').value = 'May 3 vs. Northside';
-    loadData();
+  function loadStaticData() {
+    clearErr();
+
+    try {
+      lineupData = parseStaticTSV(STATIC_TSV);
+      currentInning = 0;
+      renderOutput();
+    } catch (err) {
+      showErr(err.message || 'Unable to load static lineup data.');
+    }
   }
 
   function clearAll() {
-    document.getElementById('pasteArea').value = '';
-    document.getElementById('teamName').value = '';
-    document.getElementById('gameName').value = '';
+    lineupData = null;
     document.getElementById('outputCard').style.display = 'none';
     clearErr();
-    lineupData = null;
+  }
+
+  function loadData() {
+    loadStaticData();
+  }
+
+  function loadSample() {
+    loadStaticData();
   }
 
   function renderOutput() {
-    const teamName = document.getElementById('teamName').value.trim();
-    const gameName = document.getElementById('gameName').value.trim();
-    document.getElementById('outputTitle').textContent = teamName || 'Lineup';
-    document.getElementById('outputGame').textContent = gameName;
+    document.getElementById('outputTitle').textContent = lineupData.teamName || 'Lineup';
+    document.getElementById('outputGame').textContent = lineupData.gameName || '';
     renderNav();
     renderInning(currentInning);
     renderOverview();
     document.getElementById('outputCard').style.display = 'block';
-    document.getElementById('outputCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   function renderNav() {
     const nav = document.getElementById('inningsNav');
     nav.innerHTML = '';
+
     lineupData.inningLabels.forEach((label, i) => {
       const tab = document.createElement('div');
       tab.className = 'inning-tab' + (i === currentInning ? ' active' : '');
       tab.textContent = label;
-      tab.onclick = () => { currentInning = i; renderNav(); renderInning(i); };
+      tab.onclick = () => {
+        currentInning = i;
+        renderNav();
+        renderInning(i);
+      };
       nav.appendChild(tab);
     });
   }
@@ -584,78 +228,81 @@ C&#9;Lopez&#9;Lopez&#9;Lopez
 
     let html = '<div class="field-view">';
 
-    // Left: Infield
     html += '<div class="field-section"><div class="section-label">Infield</div>';
     INFIELD.forEach(pos => {
       const name = getPlayer(pos);
       html += `<div class="position-row">
-        <span class="pos-badge ${POS_CLASS[pos]}">${POS_LABELS[pos]}</span>
+        <span class="pos-badge ${getPosClass(pos)}">${getPosLabel(pos)}</span>
         ${name
-          ? `<span class="player-name">${esc(name)}</span><span class="player-pos-name">${POS_FRIENDLY[pos]}</span>`
+          ? `<span class="player-name">${esc(name)}</span><span class="player-pos-name">${getPosFriendly(pos)}</span>`
           : `<span class="player-empty">—</span>`}
       </div>`;
     });
     html += '</div>';
 
-    // Right: Outfield + DH/Bench
     html += '<div class="field-section"><div class="section-label">Outfield</div>';
     OUTFIELD.forEach(pos => {
       const name = getPlayer(pos);
       html += `<div class="position-row">
-        <span class="pos-badge ${POS_CLASS[pos]}">${POS_LABELS[pos]}</span>
+        <span class="pos-badge ${getPosClass(pos)}">${getPosLabel(pos)}</span>
         ${name
-          ? `<span class="player-name">${esc(name)}</span><span class="player-pos-name">${POS_FRIENDLY[pos]}</span>`
+          ? `<span class="player-name">${esc(name)}</span><span class="player-pos-name">${getPosFriendly(pos)}</span>`
           : `<span class="player-empty">—</span>`}
       </div>`;
     });
 
-    const activeExtras = EXTRAS.filter(p => getPlayer(p));
+    const activeExtras = lineupData.extraPosOrder.filter(pos => getPlayer(pos));
     if (activeExtras.length) {
-      html += '<div style="margin-top:14px;"><div class="section-label">DH / Bench</div>';
+      html += '<div style="margin-top:14px;"><div class="section-label">Extras</div>';
       activeExtras.forEach(pos => {
         const name = getPlayer(pos);
         html += `<div class="position-row">
-          <span class="pos-badge ${POS_CLASS[pos]}">${POS_LABELS[pos]}</span>
+          <span class="pos-badge ${getPosClass(pos)}">${getPosLabel(pos)}</span>
           <span class="player-name">${esc(name)}</span>
-          <span class="player-pos-name">${POS_FRIENDLY[pos]}</span>
+          <span class="player-pos-name">${getPosFriendly(pos)}</span>
         </div>`;
       });
       html += '</div>';
     }
-    html += '</div></div>';
 
+    html += '</div></div>';
     document.getElementById('inningContent').innerHTML = html;
   }
 
   function renderOverview() {
     const d = lineupData.data;
-    const allPos = [...INFIELD, ...OUTFIELD, ...EXTRAS];
+    const allPos = [...INFIELD, ...OUTFIELD, ...lineupData.extraPosOrder];
     const usedPos = allPos.filter(p => d[p] && d[p].some(v => v));
 
     let html = '<thead><tr><th>Position</th>';
-    lineupData.inningLabels.forEach(l => { html += `<th>${esc(l)}</th>`; });
+    lineupData.inningLabels.forEach(l => {
+      html += `<th>${esc(l)}</th>`;
+    });
     html += '</tr></thead><tbody>';
 
     usedPos.forEach(pos => {
       html += `<tr><td><div class="pos-cell">
-        <span class="pos-badge ${POS_CLASS[pos]}" style="width:30px;height:20px;font-size:10px;">${POS_LABELS[pos]}</span>
-        <span class="pos-name-small">${POS_FRIENDLY[pos]}</span>
+        <span class="pos-badge ${getPosClass(pos)}" style="width:30px;height:20px;font-size:10px;">${getPosLabel(pos)}</span>
+        <span class="pos-name-small">${getPosFriendly(pos)}</span>
       </div></td>`;
+
       for (let i = 0; i < lineupData.inningCount; i++) {
         const name = d[pos] && d[pos][i] ? d[pos][i] : '';
         html += name
           ? `<td>${esc(name)}</td>`
           : `<td class="empty-cell">—</td>`;
       }
+
       html += '</tr>';
     });
+
     html += '</tbody>';
     document.getElementById('overviewTable').innerHTML = html;
   }
 
   function setView(v) {
     currentView = v;
-    document.getElementById('viewInning').style.display  = v === 'inning'   ? '' : 'none';
+    document.getElementById('viewInning').style.display = v === 'inning' ? '' : 'none';
     document.getElementById('viewOverview').style.display = v === 'overview' ? '' : 'none';
     document.getElementById('btnInning').classList.toggle('active', v === 'inning');
     document.getElementById('btnOverview').classList.toggle('active', v === 'overview');
@@ -668,6 +315,6 @@ C&#9;Lopez&#9;Lopez&#9;Lopez
       .replace(/>/g,'&gt;')
       .replace(/"/g,'&quot;');
   }
+
+  document.addEventListener('DOMContentLoaded', loadStaticData);
 </script>
-</body>
-</html>
