@@ -1,26 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baseball Lineup Card</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f5f5f3;
+      --bg-tertiary: #eeede9;
+      --text: #1a1a18;
+      --text-secondary: #6b6b67;
+      --text-tertiary: #9b9b96;
+      --border: rgba(0,0,0,0.12);
+      --border-md: rgba(0,0,0,0.22);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --green-light: #C0DD97;
+      --green-dark: #3B6D11;
+      --blue-light: #B5D4F4;
+      --blue-dark: #0C447C;
+      --amber-light: #FAC775;
+      --amber-dark: #633806;
+      --pink-light: #F4C0D1;
+      --pink-dark: #72243E;
+      --purple-light: #CECBF6;
+      --purple-dark: #3C3489;
+      --font: 'Georgia', serif;
+      --font-ui: system-ui, -apple-system, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a;
+        --bg-secondary: #252523;
+        --bg-tertiary: #2e2e2b;
+        --text: #f0efe9;
+        --text-secondary: #a8a8a2;
+        --text-tertiary: #6b6b67;
+        --border: rgba(255,255,255,0.1);
+        --border-md: rgba(255,255,255,0.2);
+        --green-light: #3B6D11;
+        --green-dark: #C0DD97;
+        --blue-light: #0C447C;
+        --blue-dark: #B5D4F4;
+        --amber-light: #633806;
+        --amber-dark: #FAC775;
+        --pink-light: #72243E;
+        --pink-dark: #F4C0D1;
+        --purple-light: #3C3489;
+        --purple-dark: #CECBF6;
+      }
+    }
+
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg-tertiary);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .page { max-width: 820px; margin: 0 auto; }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+    .site-header h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      font-family: var(--font-ui);
+    }
+    .site-header p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .note-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+    .note-card code {
+      font-family: 'Menlo', monospace;
+      background: var(--bg-secondary);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .error {
+      font-size: 13px;
+      color: #a32d2d;
+      background: #fcebeb;
+      border: 0.5px solid #f09595;
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    @media (prefers-color-scheme: dark) {
+      .error { color: #f09595; background: #2a1414; border-color: #a32d2d; }
+    }
+
+    .output-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: none;
+    }
+
+    .output-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 0.5px solid var(--border);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .output-title { font-size: 16px; font-weight: 600; color: var(--text); }
+    .output-game { font-size: 13px; color: var(--text-secondary); margin-left: 8px; }
+
+    .view-toggle { display: flex; gap: 6px; }
+    .view-toggle button { font-size: 12px; padding: 5px 12px; }
+    .view-toggle button.active {
+      background: var(--bg-secondary);
+      font-weight: 600;
+      border-color: var(--border-md);
+    }
+
+    button {
+      padding: 8px 18px;
+      font-size: 13px;
+      font-family: var(--font-ui);
+      border: 0.5px solid var(--border-md);
+      border-radius: var(--radius-md);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+    }
+    button:hover { background: var(--bg-secondary); }
+
+    .innings-nav {
+      display: flex;
+      border-bottom: 0.5px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+    .inning-tab {
+      padding: 10px 22px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color 0.15s;
+      user-select: none;
+    }
+    .inning-tab:hover { color: var(--text); }
+    .inning-tab.active {
+      color: var(--text);
+      border-bottom-color: var(--text);
+      font-weight: 600;
+    }
+
+    .field-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    @media (max-width: 560px) {
+      .field-view { grid-template-columns: 1fr; }
+      .field-section:first-child { border-right: none; border-bottom: 0.5px solid var(--border); }
+    }
+    .field-section { padding: 1.25rem 1.5rem; }
+    .field-section:first-child { border-right: 0.5px solid var(--border); }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .position-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .position-row:last-child { border-bottom: none; }
+
+    .pos-badge {
+      width: 34px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 4px;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+    .pos-pitcher  { background: var(--amber-light);  color: var(--amber-dark); }
+    .pos-catcher  { background: var(--blue-light);   color: var(--blue-dark); }
+    .pos-infield  { background: var(--green-light);  color: var(--green-dark); }
+    .pos-outfield { background: var(--pink-light);   color: var(--pink-dark); }
+    .pos-dh       { background: var(--purple-light); color: var(--purple-dark); }
+    .pos-bench    { background: var(--bg-secondary); color: var(--text-secondary); border: 0.5px solid var(--border); }
+
+    .player-name { font-size: 14px; color: var(--text); }
+    .player-pos-name { font-size: 11px; color: var(--text-tertiary); margin-left: auto; }
+    .player-empty { font-size: 14px; color: var(--text-tertiary); font-style: italic; }
+
+    .overview-wrap { overflow-x: auto; }
+    .overview-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .overview-table th {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--bg-secondary);
+      white-space: nowrap;
+    }
+    .overview-table td {
+      padding: 8px 12px;
+      border-bottom: 0.5px solid var(--border);
+      color: var(--text);
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+    .overview-table tr:last-child td { border-bottom: none; }
+    .overview-table .pos-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pos-name-small { font-size: 12px; color: var(--text-secondary); }
+    .empty-cell { color: var(--text-tertiary); }
+
+    /* Field diagram */
+    .field-diagram-wrap {
+      padding: 1.25rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .field-diagram-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .field-diagram-inning {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .field-diagram-card {
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+    }
+
+    .field-diagram {
+      position: relative;
+      width: min(100%, 620px);
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+      border-radius: 18px 18px 140px 140px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 110%, #b98a57 0 23%, transparent 23.5%),
+        radial-gradient(circle at 50% 65%, rgba(255,255,255,0.08) 0 38%, transparent 38.5%),
+        linear-gradient(180deg, #4f8f43 0%, #3f7c35 100%);
+      border: 1px solid var(--border);
+    }
+
+    .field-diagram::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 18%;
+      width: 34%;
+      aspect-ratio: 1 / 1;
+      transform: translateX(-50%) rotate(45deg);
+      background: #c89a63;
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 4px;
+    }
+
+    .field-diagram::after {
+      content: "";
+      position: absolute;
+      inset: 7% 7% 7% 7%;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-bottom: none;
+      border-radius: 50% 50% 0 0 / 70% 70% 0 0;
+      pointer-events: none;
+    }
+
+    .base {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #fff7d6;
+      border: 1px solid rgba(0,0,0,0.18);
+      transform: rotate(45deg);
+      z-index: 2;
+    }
+
+    .base-home {
+      left: 50%;
+      bottom: 14%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .base-first {
+      left: 68%;
+      bottom: 31%;
+    }
+
+    .base-second {
+      left: 50%;
+      bottom: 49%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .base-third {
+      left: 32%;
+      bottom: 31%;
+    }
+
+    .field-player {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      min-width: 72px;
+      max-width: 110px;
+      text-align: center;
+      padding: 6px 8px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.92);
+      color: #1a1a18;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.08);
+      line-height: 1.2;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .field-player {
+        background: rgba(37,37,35,0.92);
+        color: var(--text);
+        border-color: rgba(255,255,255,0.08);
+      }
+    }
+
+    .field-player .fp-pos {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 3px;
+    }
+
+    .field-player .fp-name {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    .spot-p  { left: 50%; top: 58%; }
+    .spot-c  { left: 50%; top: 82%; }
+    .spot-1b { left: 71%; top: 56%; }
+    .spot-2b { left: 61%; top: 43%; }
+    .spot-ss { left: 39%; top: 43%; }
+    .spot-3b { left: 29%; top: 56%; }
+
+    .spot-lf { left: 18%; top: 26%; }
+    .spot-lc { left: 33%; top: 18%; }
+    .spot-cf { left: 50%; top: 13%; }
+    .spot-rc { left: 67%; top: 18%; }
+    .spot-rf { left: 82%; top: 26%; }
+
+    .field-extras {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .field-extra-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .field-extra-chip .label {
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="site-header">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="14" y="2" width="8" height="8" rx="1.5" fill="#C0DD97" stroke="#3B6D11" stroke-width="1.2"/>
+      <rect x="2" y="14" width="8" height="8" rx="1.5" fill="#C0DD97" stroke="#3B6D11" stroke-width="1.2"/>
+      <rect x="26" y="14" width="8" height="8" rx="1.5" fill="#C0DD97" stroke="#3B6D11" stroke-width="1.2"/>
+      <rect x="14" y="26" width="8" height="8" rx="1.5" fill="#FAC775" stroke="#633806" stroke-width="1.2"/>
+      <polygon points="18,5 5,18 18,31 31,18" fill="none" stroke="#3B6D11" stroke-width="1" stroke-dasharray="2.5,2.5"/>
+    </svg>
+    <div>
+      <h1>Redwings Lineup Card</h1>
+    </div>
+  </div>
+
+  <div id="errorMsg" class="error"></div>
+
+  <div class="output-card" id="outputCard">
+    <div class="output-header">
+      <div>
+        <span class="output-title" id="outputTitle"></span>
+        <span class="output-game" id="outputGame"></span>
+      </div>
+      <div class="view-toggle">
+        <button id="btnInning" class="active" onclick="setView('inning')">By inning</button>
+        <button id="btnOverview" onclick="setView('overview')">Full overview</button>
+      </div>
+    </div>
+
+    <div id="viewInning">
+      <div class="innings-nav" id="inningsNav"></div>
+      <div id="inningContent"></div>
+
+      <div class="field-diagram-wrap">
+        <div class="field-diagram-header">
+          <div class="section-label" style="margin-bottom:0;">Field diagram</div>
+          <div class="field-diagram-inning" id="fieldDiagramLabel"></div>
+        </div>
+
+        <div class="field-diagram-card">
+          <div class="field-diagram" id="fieldDiagram"></div>
+        </div>
+
+        <div class="field-extras" id="fieldExtras"></div>
+      </div>
+    </div>
+
+    <div id="viewOverview" style="display:none;">
+      <div class="overview-wrap">
+        <table class="overview-table" id="overviewTable"></table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <script>
   const INFIELD  = ['P','C','1B','2B','3B','SS'];
   const OUTFIELD = ['LF','LC','CF','RC','RF'];
 
-  const TEAM_NAME = 'Your Team';
-  const GAME_NAME = 'Game / date';
+  const TEAM_NAME = 'Redwings';
+  const GAME_NAME = 'Riverdogs / 4/24';
 
   const STATIC_TSV = `
-	1	2	3	4	5	6
-P	Isaac	Isaac	Isaac	Mateo C	Mateo C	Mateo C
-C	Mateo S	Pyeonghwa	Fitz	Theo	Max	Ryder
-1B	Elison	Elison	Elison	Elison	Elison	Elison
-2B	Pyeonghwa	Fitz	Mateo S	Max	Ryder	Theo
-SS	Joe	Joe	Joe	Mateo D	Mateo D	Mateo D
-3B	Ethan	Ethan	Ethan	KJ	KJ	KJ
-LF	Ryder	Ryder	Ryder	Mateo S	Mateo S	Mateo S
-LC	KJ	Mateo D	Mateo C	Isaac	Joe	Ethan
-CF	Mateo D	Mateo C	KJ	Joe	Ethan	Isaac
-RC	Max	Max	Max	Pyeonghwa	Pyeonghwa	Pyeonghwa
-RF	Theo	Theo	Theo	Fitz	Fitz	Fitz
-						
-EH	Mateo C	Mateo S	Pyeonghwa	Ethan	Isaac	Joe
-EH	Fitz	KJ	Mateo D	Ryder	Theo	Max
+Position\t1\t2\t3\t4\t5\t6
+P\tIsaac\tIsaac\tIsaac\tMateo C\tMateo C\tMateo C
+C\tMateo S\tPyeonghwa\tFitz\tTheo\tMax\tRyder
+1B\tElison\tElison\tElison\tElison\tElison\tElison
+2B\tPyeonghwa\tFitz\tMateo S\tMax\tRyder\tTheo
+SS\tJoe\tJoe\tJoe\tMateo D\tMateo D\tMateo D
+3B\tEthan\tEthan\tEthan\tKJ\tKJ\tKJ
+LF\tRyder\tRyder\tRyder\tMateo S\tMateo S\tMateo S
+LC\tKJ\tMateo D\tMateo C\tIsaac\tJoe\tEthan
+CF\tMateo D\tMateo C\tKJ\tJoe\tEthan\tIsaac
+RC\tMax\tMax\tMax\tPyeonghwa\tPyeonghwa\tPyeonghwa
+RF\tTheo\tTheo\tTheo\tFitz\tFitz\tFitz
+
+EH\tMateo C\tMateo S\tPyeonghwa\tEthan\tIsaac\tJoe
+EH\tFitz\tKJ\tMateo D\tRyder\tTheo\tMax
   `.trim();
 
   const POS_FRIENDLY_BASE = {
@@ -205,6 +706,7 @@ EH	Fitz	KJ	Mateo D	Ryder	Theo	Max
     document.getElementById('outputCard').style.display = 'block';
   }
 
+
   function renderNav() {
     const nav = document.getElementById('inningsNav');
     nav.innerHTML = '';
@@ -267,6 +769,7 @@ EH	Fitz	KJ	Mateo D	Ryder	Theo	Max
 
     html += '</div></div>';
     document.getElementById('inningContent').innerHTML = html;
+    renderFieldDiagram(idx);
   }
 
   function renderOverview() {
@@ -316,5 +819,78 @@ EH	Fitz	KJ	Mateo D	Ryder	Theo	Max
       .replace(/"/g,'&quot;');
   }
 
+  function renderFieldDiagram(idx) {
+    if (!lineupData) return;
+
+    const d = lineupData.data;
+    const getPlayer = pos => (d[pos] && d[pos][idx]) ? d[pos][idx] : '';
+
+    const spots = [
+      { pos: 'LF', className: 'spot-lf' },
+      { pos: 'LC', className: 'spot-lc' },
+      { pos: 'CF', className: 'spot-cf' },
+      { pos: 'RC', className: 'spot-rc' },
+      { pos: 'RF', className: 'spot-rf' },
+
+      { pos: '3B', className: 'spot-3b' },
+      { pos: 'SS', className: 'spot-ss' },
+      { pos: '2B', className: 'spot-2b' },
+      { pos: '1B', className: 'spot-1b' },
+
+      { pos: 'P', className: 'spot-p' },
+      { pos: 'C', className: 'spot-c' }
+    ];
+
+    let html = `
+      <div class="base base-home"></div>
+      <div class="base base-first"></div>
+      <div class="base base-second"></div>
+      <div class="base base-third"></div>
+    `;
+
+    spots.forEach(({ pos, className }) => {
+      const name = getPlayer(pos);
+      if (!name) return;
+
+      html += `
+        <div class="field-player ${className}">
+          <span class="fp-pos">${esc(pos)}</span>
+          <span class="fp-name">${esc(name)}</span>
+        </div>
+      `;
+    });
+
+    document.getElementById('fieldDiagram').innerHTML = html;
+    document.getElementById('fieldDiagramLabel').textContent =
+      'Showing inning ' + esc(lineupData.inningLabels[idx] || String(idx + 1));
+
+    renderFieldExtras(idx);
+  }
+
+  function renderFieldExtras(idx) {
+    const extrasEl = document.getElementById('fieldExtras');
+    if (!extrasEl || !lineupData) return;
+
+    const d = lineupData.data;
+    const extraPositions = lineupData.extraPosOrder || [];
+    const activeExtras = extraPositions
+      .map(pos => ({ pos, name: d[pos] && d[pos][idx] ? d[pos][idx] : '' }))
+      .filter(item => item.name);
+
+    if (!activeExtras.length) {
+      extrasEl.innerHTML = '';
+      return;
+    }
+
+    extrasEl.innerHTML = activeExtras.map(item => `
+      <div class="field-extra-chip">
+        <span class="label">${esc(getPosLabel(item.pos))}</span>
+        <span>${esc(item.name)}</span>
+      </div>
+    `).join('');
+  }
+
   document.addEventListener('DOMContentLoaded', loadStaticData);
 </script>
+</body>
+</html>
