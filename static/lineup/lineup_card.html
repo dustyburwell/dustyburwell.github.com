@@ -958,7 +958,7 @@ function renderInningBattingStatus() {
       <span class="batting-status-label">Most recent batter</span>
       <span class="batting-status-name">${esc(recent ? recent.name : '—')}</span>
       <span class="batting-status-detail">
-        ${recent ? `${esc(getPosLabel(recent.pos))} · ${esc(getPosFriendly(recent.pos))}` : 'Tap a batter in Batting order view'}
+        ${recent ? `` : 'Tap a batter in Batting order view'}
       </span>
     </div>
 
@@ -966,7 +966,7 @@ function renderInningBattingStatus() {
       <span class="batting-status-label">Up next</span>
       <span class="batting-status-name">${esc(next ? next.name : '—')}</span>
       <span class="batting-status-detail">
-        ${next ? `${esc(getPosLabel(next.pos))} · ${esc(getPosFriendly(next.pos))}` : '—'}
+        ${next ? `` : '—'}
       </span>
     </div>
   `;
@@ -1008,7 +1008,6 @@ function renderBattingOrder() {
 
             <span class="batting-main">
               <span class="batting-name">${esc(entry.name || '—')}</span>
-              <span class="batting-detail">${esc(getPosLabel(entry.pos))} · ${esc(getPosFriendly(entry.pos))}</span>
             </span>
 
             ${isRecent
