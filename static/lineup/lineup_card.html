@@ -440,6 +440,156 @@
       color: var(--text-secondary);
       font-weight: 600;
     }
+
+    /* Batting order */
+    .batting-view {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+
+    .batting-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .batting-subtitle {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .batting-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .batting-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .batting-item:hover {
+      background: var(--bg-secondary);
+    }
+
+    .batting-item.active {
+      border-color: var(--text);
+      background: var(--bg-secondary);
+    }
+
+    .batting-item.up-next {
+      border-color: var(--border-md);
+      box-shadow: inset 0 0 0 1px var(--border);
+    }
+
+    .batting-slot {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      color: var(--text);
+    }
+
+    .batting-main {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .batting-name {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .batting-detail {
+      display: block;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .batting-state {
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 8px;
+    }
+
+    .batting-empty {
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 12px;
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .inning-batting-status {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      padding: 1rem 1.5rem 0;
+    }
+
+    @media (max-width: 560px) {
+      .inning-batting-status {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .batting-status-card {
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+    }
+
+    .batting-status-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 4px;
+    }
+
+    .batting-status-name {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .batting-status-detail {
+      display: block;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
   </style>
 </head>
 <body>
@@ -461,41 +611,57 @@
   <div id="errorMsg" class="error"></div>
 
   <div class="output-card" id="outputCard">
-    <div class="output-header">
-      <div>
-        <span class="output-title" id="outputTitle"></span>
-        <span class="output-game" id="outputGame"></span>
-      </div>
-      <div class="view-toggle">
-        <button id="btnInning" class="active" onclick="setView('inning')">By inning</button>
-        <button id="btnOverview" onclick="setView('overview')">Full overview</button>
-      </div>
+  <div class="output-header">
+    <div>
+      <span class="output-title" id="outputTitle"></span>
+      <span class="output-game" id="outputGame"></span>
     </div>
-
-    <div id="viewInning">
-      <div class="innings-nav" id="inningsNav"></div>
-      <div id="inningContent"></div>
-
-      <div class="field-diagram-wrap">
-        <div class="field-diagram-header">
-          <div class="section-label" style="margin-bottom:0;">Field diagram</div>
-          <div class="field-diagram-inning" id="fieldDiagramLabel"></div>
-        </div>
-
-        <div class="field-diagram-card">
-          <div class="field-diagram" id="fieldDiagram"></div>
-        </div>
-
-        <div class="field-extras" id="fieldExtras"></div>
-      </div>
-    </div>
-
-    <div id="viewOverview" style="display:none;">
-      <div class="overview-wrap">
-        <table class="overview-table" id="overviewTable"></table>
-      </div>
+    <div class="view-toggle">
+      <button id="btnInning" class="active" onclick="setView('inning')">By inning</button>
+      <button id="btnBatting" onclick="setView('batting')">Batting order</button>
+      <button id="btnOverview" onclick="setView('overview')">Full overview</button>
     </div>
   </div>
+
+  <div class="innings-nav" id="inningsNav"></div>
+
+  <!-- Inning view -->
+  <div id="viewInning">
+    <div class="inning-batting-status" id="inningBattingStatus"></div>
+    <div id="inningContent"></div>
+
+    <div class="field-diagram-wrap">
+      <div class="field-diagram-header">
+        <div class="section-label" style="margin-bottom:0;">Field diagram</div>
+        <div class="field-diagram-inning" id="fieldDiagramLabel"></div>
+      </div>
+
+      <div class="field-diagram-card">
+        <div class="field-diagram" id="fieldDiagram"></div>
+      </div>
+
+      <div class="field-extras" id="fieldExtras"></div>
+    </div>
+  </div>
+
+  <!-- Batting order view -->
+  <div id="viewBatting" style="display:none;">
+    <div class="batting-view">
+      <div class="batting-header">
+        <div class="section-label" style="margin-bottom:0;">Batting order</div>
+        <div class="batting-subtitle">Click the most recent batter to keep your place.</div>
+      </div>
+      <div id="battingOrderContent"></div>
+    </div>
+  </div>
+
+  <!-- Overview view -->
+  <div id="viewOverview" style="display:none;">
+    <div class="overview-wrap">
+      <table class="overview-table" id="overviewTable"></table>
+    </div>
+  </div>
+</div>
 
 </div>
 
@@ -504,24 +670,23 @@
   const OUTFIELD = ['LF','LC','CF','RC','RF'];
 
   const TEAM_NAME = 'Redwings';
-  const GAME_NAME = 'Riverdogs / 4/24';
+  const GAME_NAME = 'Trash Pandas / 4/25';
 
   const STATIC_TSV = `
-Position\t1\t2\t3\t4\t5\t6
-P\tIsaac\tIsaac\tIsaac\tMateo C\tMateo C\tMateo C
-C\tMateo S\tPyeonghwa\tFitz\tTheo\tMax\tRyder
-1B\tElison\tElison\tElison\tElison\tElison\tElison
-2B\tPyeonghwa\tFitz\tMateo S\tMax\tRyder\tTheo
-SS\tJoe\tJoe\tJoe\tMateo D\tMateo D\tMateo D
-3B\tEthan\tEthan\tEthan\tKJ\tKJ\tKJ
-LF\tRyder\tRyder\tRyder\tMateo S\tMateo S\tMateo S
-LC\tKJ\tMateo D\tMateo C\tIsaac\tJoe\tEthan
-CF\tMateo D\tMateo C\tKJ\tJoe\tEthan\tIsaac
-RC\tMax\tMax\tMax\tPyeonghwa\tPyeonghwa\tPyeonghwa
-RF\tTheo\tTheo\tTheo\tFitz\tFitz\tFitz
-
-EH\tMateo C\tMateo S\tPyeonghwa\tEthan\tIsaac\tJoe
-EH\tFitz\tKJ\tMateo D\tRyder\tTheo\tMax
+Position	BO	1	2	3	4	5	6
+P	Joe	Joe	Joe	Joe	Mateo C	Mateo C	Mateo C
+C	Ryder	Mateo S	Pyeonghwa	Ryder	Max	Fitz	Mateo S
+1B	Ellison	Elison	Elison	Elison	Elison	Elison	Elison
+2B	Mateo D	Pyeonghwa	Mateo S	Max	Ryder	Mateo S	Fitz
+SS	Fitz	Isaac	Isaac	Isaac	Mateo D	Mateo D	Mateo D
+3B	Ethan	Ethan	Ethan	Ethan	KJ	KJ	KJ
+LF	KJ	Ryder	Ryder	Fitz	Fitz	Pyeonghwa	Pyeonghwa
+LC	Isaac	KJ	Mateo D	Mateo C	Isaac	Joe	Ethan
+RC	Mateo C	Mateo D	Mateo C	KJ	Joe	Ethan	Isaac
+CF	Mateo S	Max	Max	Mateo S	Mateo S	Ryder	Ryder
+RF	Max	Fitz	Fitz	Pyeonghwa	Pyeonghwa	Max	Max
+							
+EH	Peyonghwa	Mateo C	KJ	Mateo D	Ethan	Isaac	Joe
   `.trim();
 
   const POS_FRIENDLY_BASE = {
@@ -543,6 +708,7 @@ EH\tFitz\tKJ\tMateo D\tRyder\tTheo\tMax
 
   let lineupData = null;
   let currentInning = 0;
+  let lastBatterPos = '';
   let currentView = 'inning';
 
   function normalizeBasePos(raw) {
@@ -565,6 +731,11 @@ EH\tFitz\tKJ\tMateo D\tRyder\tTheo\tMax
     if (['BENCH', 'BN', 'BENCH1', 'BENCH2'].includes(r)) return 'Bench';
 
     return null;
+  }
+
+  function isBatterHeader(value) {
+    const v = String(value || '').trim().toLowerCase();
+    return ['bo', 'batter', 'player', 'name', 'hitter'].includes(v);
   }
 
   function isExtraPos(pos) {
@@ -611,65 +782,85 @@ EH\tFitz\tKJ\tMateo D\tRyder\tTheo\tMax
     document.getElementById('errorMsg').style.display = 'none';
   }
 
-  function parseStaticTSV(tsv) {
-    const rows = tsv
-      .split(/\r?\n/)
-      .map(line => line.split('\t').map(cell => cell.trim()))
-      .filter(row => row.some(cell => cell !== ''));
+  function isBattingOrderHeader(value) {
+  const v = String(value || '').trim().toLowerCase();
+  return ['bo', 'bat', 'order', 'batting', 'battingorder', 'lineup'].includes(v);
+}
 
-    if (rows.length < 2) {
-      throw new Error('Static lineup data needs a header row and at least one player row.');
+function parseStaticTSV(tsv) {
+  const rows = tsv
+    .split(/\r?\n/)
+    .map(line => line.split('\t').map(cell => cell.trim()))
+    .filter(row => row.some(cell => cell !== ''));
+
+  if (rows.length < 2) {
+    throw new Error('Static lineup data needs a header row and at least one player row.');
+  }
+
+  const headerRow = rows[0];
+  const hasBatterColumn = isBatterHeader(headerRow[1]);
+  const inningStartCol = hasBatterColumn ? 2 : 1;
+  const inningCount = headerRow.length - inningStartCol;
+
+  if (inningCount < 1 || inningCount > 9) {
+    throw new Error('Expected 1–9 inning columns after the position/batter columns. Found ' + inningCount + '.');
+  }
+
+  const inningLabels = headerRow
+    .slice(inningStartCol)
+    .map((h, i) => h || String(i + 1));
+
+  const data = {};
+  const extraPosOrder = [];
+  const battingEntries = [];
+  const extraCounts = { EH: 0, DH: 0, Bench: 0 };
+
+  rows.slice(1).forEach((row, rowIndex) => {
+    if (!row[0]) return;
+
+    const basePos = normalizeBasePos(row[0]);
+    if (!basePos) return;
+
+    let pos = basePos;
+
+    if (['EH', 'DH', 'Bench'].includes(basePos)) {
+      extraCounts[basePos] += 1;
+      pos = basePos + extraCounts[basePos];
+      extraPosOrder.push(pos);
     }
 
-    const headerRow = rows[0];
-    const inningCount = headerRow.length - 1;
+    if (!data[pos]) data[pos] = [];
 
-    if (inningCount < 1 || inningCount > 9) {
-      throw new Error('Expected 1–9 inning columns after the position column. Found ' + inningCount + '.');
-    }
+    const batterName = hasBatterColumn
+      ? (row[1] || '')
+      : '';
 
-    const inningLabels = headerRow
-      .slice(1)
-      .map((h, i) => h || String(i + 1));
-
-    const data = {};
-    const extraPosOrder = [];
-    const extraCounts = { EH: 0, DH: 0, Bench: 0 };
-
-    rows.slice(1).forEach(row => {
-      if (!row[0]) return;
-
-      const basePos = normalizeBasePos(row[0]);
-      if (!basePos) return;
-
-      let pos = basePos;
-
-      if (['EH', 'DH', 'Bench'].includes(basePos)) {
-        extraCounts[basePos] += 1;
-        pos = basePos + extraCounts[basePos];
-        extraPosOrder.push(pos);
-      }
-
-      if (!data[pos]) data[pos] = [];
-
-      for (let i = 0; i < inningCount; i++) {
-        data[pos][i] = row[i + 1] || '';
-      }
+    battingEntries.push({
+      pos,
+      name: batterName,
+      orderIndex: rowIndex
     });
 
-    if (Object.keys(data).length === 0) {
-      throw new Error('No recognizable positions found in the static lineup data.');
+    for (let i = 0; i < inningCount; i++) {
+      data[pos][i] = row[inningStartCol + i] || '';
     }
+  });
 
-    return {
-      teamName: TEAM_NAME,
-      gameName: GAME_NAME,
-      data,
-      inningLabels,
-      inningCount,
-      extraPosOrder
-    };
+  if (Object.keys(data).length === 0) {
+    throw new Error('No recognizable positions found in the static lineup data.');
   }
+
+  return {
+    teamName: TEAM_NAME,
+    gameName: GAME_NAME,
+    data,
+    inningLabels,
+    inningCount,
+    extraPosOrder,
+    battingEntries,
+    hasBatterColumn
+  };
+}
 
   function loadStaticData() {
     clearErr();
@@ -677,6 +868,7 @@ EH\tFitz\tKJ\tMateo D\tRyder\tTheo\tMax
     try {
       lineupData = parseStaticTSV(STATIC_TSV);
       currentInning = 0;
+      lastBatterPos = '';
       renderOutput();
     } catch (err) {
       showErr(err.message || 'Unable to load static lineup data.');
@@ -697,15 +889,150 @@ EH\tFitz\tKJ\tMateo D\tRyder\tTheo\tMax
     loadStaticData();
   }
 
+  function compareBattingOrder(a, b) {
+  const aNum = /^\d+$/.test(a.order) ? parseInt(a.order, 10) : null;
+  const bNum = /^\d+$/.test(b.order) ? parseInt(b.order, 10) : null;
+
+  if (aNum !== null && bNum !== null) return aNum - bNum;
+  if (aNum !== null) return -1;
+  if (bNum !== null) return 1;
+
+  return String(a.order).localeCompare(String(b.order));
+}
+
+function getBattingEntriesForInning(idx) {
+  if (!lineupData || !lineupData.battingEntries) return [];
+
+  return lineupData.battingEntries
+    .map(entry => ({
+      pos: entry.pos,
+      order: entry.order || '',
+      name: (lineupData.data[entry.pos] && lineupData.data[entry.pos][idx]) ? lineupData.data[entry.pos][idx] : ''
+    }))
+    .sort(compareBattingOrder);
+}
+
+function setRecentBatter(pos) {
+  lastBatterPos = pos;
+  renderBattingOrder();
+  renderInningBattingStatus();
+}
+
+function getOrderedBattingEntries() {
+  if (!lineupData || !lineupData.battingEntries) return [];
+  return [...lineupData.battingEntries].sort((a, b) => a.orderIndex - b.orderIndex);
+}
+
+function getNextBatterEntry() {
+  const entries = getOrderedBattingEntries();
+  if (!entries.length) return null;
+
+  if (!lastBatterPos) return entries[0];
+
+  const recentIndex = entries.findIndex(entry => entry.pos === lastBatterPos);
+  if (recentIndex === -1) return entries[0];
+
+  return entries[(recentIndex + 1) % entries.length];
+}
+
+function getRecentBatterEntry() {
+  const entries = getOrderedBattingEntries();
+  if (!entries.length || !lastBatterPos) return null;
+  return entries.find(entry => entry.pos === lastBatterPos) || null;
+}
+
+function renderInningBattingStatus() {
+  const el = document.getElementById('inningBattingStatus');
+  if (!el || !lineupData) return;
+
+  if (!lineupData.hasBatterColumn) {
+    el.innerHTML = '';
+    return;
+  }
+
+  const recent = getRecentBatterEntry();
+  const next = getNextBatterEntry();
+
+  el.innerHTML = `
+    <div class="batting-status-card">
+      <span class="batting-status-label">Most recent batter</span>
+      <span class="batting-status-name">${esc(recent ? recent.name : '—')}</span>
+      <span class="batting-status-detail">
+        ${recent ? `${esc(getPosLabel(recent.pos))} · ${esc(getPosFriendly(recent.pos))}` : 'Tap a batter in Batting order view'}
+      </span>
+    </div>
+
+    <div class="batting-status-card">
+      <span class="batting-status-label">Up next</span>
+      <span class="batting-status-name">${esc(next ? next.name : '—')}</span>
+      <span class="batting-status-detail">
+        ${next ? `${esc(getPosLabel(next.pos))} · ${esc(getPosFriendly(next.pos))}` : '—'}
+      </span>
+    </div>
+  `;
+}
+
+function renderBattingOrder() {
+  const el = document.getElementById('battingOrderContent');
+  if (!el || !lineupData) return;
+
+  if (!lineupData.hasBatterColumn) {
+    el.innerHTML = '<div class="batting-empty">Add a <code>Batter</code> column after the position column to enable batting-order view.</div>';
+    return;
+  }
+
+  const entries = getOrderedBattingEntries();
+
+  if (!entries.length) {
+    el.innerHTML = '<div class="batting-empty">No batting order data found.</div>';
+    return;
+  }
+
+  const recentPos = lastBatterPos;
+  const next = getNextBatterEntry();
+  const nextPos = next ? next.pos : '';
+
+  el.innerHTML = `
+    <div class="batting-list">
+      ${entries.map((entry, idx) => {
+        const isRecent = entry.pos === recentPos;
+        const isNext = !isRecent && entry.pos === nextPos;
+
+        return `
+          <button
+            type="button"
+            class="batting-item${isRecent ? ' active' : ''}${isNext ? ' up-next' : ''}"
+            onclick="setRecentBatter('${entry.pos}')"
+          >
+            <span class="batting-slot">${idx + 1}</span>
+
+            <span class="batting-main">
+              <span class="batting-name">${esc(entry.name || '—')}</span>
+              <span class="batting-detail">${esc(getPosLabel(entry.pos))} · ${esc(getPosFriendly(entry.pos))}</span>
+            </span>
+
+            ${isRecent
+              ? '<span class="batting-state">Most recent</span>'
+              : isNext
+                ? '<span class="batting-state">Up next</span>'
+                : ''
+            }
+          </button>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
   function renderOutput() {
     document.getElementById('outputTitle').textContent = lineupData.teamName || 'Lineup';
     document.getElementById('outputGame').textContent = lineupData.gameName || '';
     renderNav();
     renderInning(currentInning);
+    renderBattingOrder();
     renderOverview();
     document.getElementById('outputCard').style.display = 'block';
   }
-
 
   function renderNav() {
     const nav = document.getElementById('inningsNav');
@@ -769,6 +1096,7 @@ EH\tFitz\tKJ\tMateo D\tRyder\tTheo\tMax
 
     html += '</div></div>';
     document.getElementById('inningContent').innerHTML = html;
+    renderInningBattingStatus();
     renderFieldDiagram(idx);
   }
 
@@ -805,9 +1133,15 @@ EH\tFitz\tKJ\tMateo D\tRyder\tTheo\tMax
 
   function setView(v) {
     currentView = v;
+
     document.getElementById('viewInning').style.display = v === 'inning' ? '' : 'none';
+    document.getElementById('viewBatting').style.display = v === 'batting' ? '' : 'none';
     document.getElementById('viewOverview').style.display = v === 'overview' ? '' : 'none';
+
+    document.getElementById('inningsNav').style.display = v === 'inning' ? '' : 'none';
+
     document.getElementById('btnInning').classList.toggle('active', v === 'inning');
+    document.getElementById('btnBatting').classList.toggle('active', v === 'batting');
     document.getElementById('btnOverview').classList.toggle('active', v === 'overview');
   }
 
