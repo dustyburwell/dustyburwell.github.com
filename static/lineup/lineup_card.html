@@ -416,6 +416,7 @@
     .spot-cf { left: 50%; top: 13%; }
     .spot-rc { left: 67%; top: 18%; }
     .spot-rf { left: 82%; top: 26%; }
+    .spot-sc { left: 50%; top: 32%; }
 
     .field-extras {
       display: flex;
@@ -667,7 +668,7 @@
 
 <script>
   const INFIELD  = ['P','C','1B','2B','3B','SS'];
-  const OUTFIELD = ['LF','LC','CF','RC','RF'];
+  const OUTFIELD = ['LF','LC','CF','RC','RF','SC'];
 
   const TEAM_NAME = 'Redwings';
   const GAME_NAME = '@ Space Cowboys / June 26 (Rescheduled)';
@@ -685,6 +686,7 @@ LC	Mateo C	KJ	Mateo C	KJ	Mateo C	KJ	Mateo C
 RC	Isaac	Pyeonghwa	Pyeonghwa	Pyeonghwa	Pyeonghwa	Pyeonghwa	Pyeonghwa
 CF	Ryder	Isaac	Isaac	Isaac	Isaac	Isaac	Isaac
 RF	Max	Max	Ryder	Max	Ryder	Max	Ryder
+SC	Trixie	Trixie	Trixie	Trixie	Trixie	Trixie
   `.trim();
 
   const POS_FRIENDLY_BASE = {
@@ -699,6 +701,7 @@ RF	Max	Max	Ryder	Max	Ryder	Max	Ryder
     CF: 'Center Field',
     RC: 'Right-Center',
     RF: 'Right Field',
+    SC: 'Short-Center',
     EH: 'Extra Hitter',
     DH: 'DH / Utility',
     Bench: 'Bench'
@@ -723,6 +726,7 @@ RF	Max	Max	Ryder	Max	Ryder	Max	Ryder
     if (['CF', 'CENTERFIELD'].includes(r)) return 'CF';
     if (['RC', 'RIGHTCENTER', 'RIGHTCENTERFIELD'].includes(r)) return 'RC';
     if (['RF', 'RIGHTFIELD'].includes(r)) return 'RF';
+    if (['SC', 'SHORTCENTER', 'SHORTCENTERFIELD'].includes(r)) return 'SC';
 
     if (['EH', 'EH1', 'EH2', 'EXTRAHITTER'].includes(r)) return 'EH';
     if (['DH', 'DH1', 'DH2'].includes(r)) return 'DH';
@@ -764,7 +768,7 @@ RF	Max	Max	Ryder	Max	Ryder	Max	Ryder
     if (base === 'P') return 'pos-pitcher';
     if (base === 'C') return 'pos-catcher';
     if (['1B','2B','3B','SS'].includes(base)) return 'pos-infield';
-    if (['LF','LC','CF','RC','RF'].includes(base)) return 'pos-outfield';
+    if (['LF','LC','CF','RC','RF','SC'].includes(base)) return 'pos-outfield';
     if (['EH','DH'].includes(base)) return 'pos-dh';
     if (base === 'Bench') return 'pos-bench';
     return 'pos-bench';
@@ -1162,6 +1166,7 @@ function renderBattingOrder() {
       { pos: 'CF', className: 'spot-cf' },
       { pos: 'RC', className: 'spot-rc' },
       { pos: 'RF', className: 'spot-rf' },
+      { pos: 'SC', className: 'spot-sc' },
 
       { pos: '3B', className: 'spot-3b' },
       { pos: 'SS', className: 'spot-ss' },
